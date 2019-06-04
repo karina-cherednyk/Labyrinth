@@ -103,7 +103,6 @@ public class MainCanvas extends JPanel implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        System.out.print(code);
         if (code == KeyEvent.VK_UP){    if(y-1>=0&&blocks[y-1][x]!=0)y--; }
         else if (code == KeyEvent.VK_DOWN){ if(y+1<height&&blocks[y+1][x]!=0)y++; }
         else if (code == KeyEvent.VK_LEFT){ if(x-1>=0&&blocks[y][x-1]!=0)x--; }

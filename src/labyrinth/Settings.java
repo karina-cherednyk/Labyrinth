@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package labyrinth;
-
-import java.util.Arrays;
-
+import javax.swing.JButton;
 /**
  *
  * @author k256
@@ -14,11 +12,10 @@ import java.util.Arrays;
 public class Settings extends javax.swing.JFrame {
 
     /**
-     * Creates new form Location
+     * Creates new form Settings
      */
     public Settings() {
         initComponents();
-        map.requestFocusInWindow();
     }
 
     /**
@@ -30,121 +27,56 @@ public class Settings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        easy = new javax.swing.JRadioButton();
-        medium = new javax.swing.JRadioButton();
-        hard = new javax.swing.JRadioButton();
-        timeLimit = new javax.swing.JCheckBox();
-        addTips = new javax.swing.JCheckBox();
-        beginGame = new javax.swing.JButton();
-        map = new MainCanvas(easy,medium,hard,timeLimit,addTips);
         jLabel1 = new javax.swing.JLabel();
+        canvas = new Canvas2();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        easy.setBackground(new java.awt.Color(153, 153, 153));
-        buttonGroup1.add(easy);
-        easy.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 24)); // NOI18N
-        easy.setText("EASY");
-        easy.setToolTipText("");
-        easy.setEnabled(false);
-
-        medium.setBackground(new java.awt.Color(153, 153, 153));
-        buttonGroup1.add(medium);
-        medium.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 24)); // NOI18N
-        medium.setText("MEDIUM");
-        medium.setEnabled(false);
-
-        hard.setBackground(new java.awt.Color(153, 153, 153));
-        buttonGroup1.add(hard);
-        hard.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 24)); // NOI18N
-        hard.setText("HARD");
-        hard.setEnabled(false);
-
-        timeLimit.setBackground(new java.awt.Color(153, 153, 153));
-        timeLimit.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 24)); // NOI18N
-        timeLimit.setText("TIME LIMIT");
-        timeLimit.setEnabled(false);
-
-        addTips.setBackground(new java.awt.Color(153, 153, 153));
-        addTips.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 24)); // NOI18N
-        addTips.setText("ADD TIPS");
-        addTips.setEnabled(false);
-
-        beginGame.setBackground(new java.awt.Color(153, 153, 153));
-        beginGame.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 24)); // NOI18N
-        beginGame.setText("BEGIN GAME");
-
-        javax.swing.GroupLayout mapLayout = new javax.swing.GroupLayout(map);
-        map.setLayout(mapLayout);
-        mapLayout.setHorizontalGroup(
-            mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
-        );
-        mapLayout.setVerticalGroup(
-            mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
-        );
-
-        jLabel1.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("UD Digi Kyokasho NK-B", 3, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("GAME SETTINGS");
+        jLabel1.setText("SETTINGS");
+        jLabel1.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(timeLimit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(medium, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(hard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addTips, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(easy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(beginGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(easy)
-                        .addGap(18, 18, 18)
-                        .addComponent(medium)
-                        .addGap(18, 18, 18)
-                        .addComponent(hard)
-                        .addGap(18, 18, 18)
-                        .addComponent(timeLimit)
-                        .addGap(18, 18, 18)
-                        .addComponent(addTips)
-                        .addGap(151, 151, 151)
-                        .addComponent(beginGame, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(map, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout canvasLayout = new javax.swing.GroupLayout(canvas);
+        canvas.setLayout(canvasLayout);
+        canvasLayout.setHorizontalGroup(
+            canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+        );
+        canvasLayout.setVerticalGroup(
+            canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 428, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(canvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(canvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,6 +86,11 @@ public class Settings extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -171,7 +108,6 @@ public class Settings extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Settings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -182,15 +118,8 @@ public class Settings extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox addTips;
-    private javax.swing.JButton beginGame;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton easy;
-    private javax.swing.JRadioButton hard;
+    private javax.swing.JPanel canvas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel map;
-    private javax.swing.JRadioButton medium;
-    private javax.swing.JCheckBox timeLimit;
     // End of variables declaration//GEN-END:variables
 }
