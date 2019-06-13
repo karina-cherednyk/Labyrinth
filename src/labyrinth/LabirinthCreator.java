@@ -21,6 +21,7 @@ public class LabirinthCreator{
     int sizeY;
     Random rg;
      boolean [][] array;
+     boolean [][] clone;
       private int bestScore = 0;
     private Point start;
     private final Point end = new Point(0, 1);
@@ -90,6 +91,8 @@ public class LabirinthCreator{
                 stack.pop();
             }
         }
+        clone=array.clone();
+        mixed();
     }
 
      public boolean isCrossroad(int x, int y) {
@@ -114,6 +117,9 @@ public class LabirinthCreator{
     public boolean [][] getArray(){
         return array;
     }
+     public boolean [][] getClone(){
+        return clone;
+    }
     public void setSize(int level){
         if(level==1){
             sizeX=21;
@@ -121,12 +127,38 @@ public class LabirinthCreator{
         }
         else if(level ==2){
             sizeX=39;
-             sizeY=78;
+             sizeY=75;
         }
         else {
             sizeX=63; 
-             sizeY=126;
+             sizeY=123;
         }
+    }
+    public    boolean [][] revers(int i,int j){
+           boolean temp;
+           boolean temp2;
+           temp=clone[j][i+2];
+           clone[j][i+2]=clone[j][i+1];
+           temp2=clone[j+1][i+2];
+           clone[j+1][i+2]=temp;
+           temp=clone[j+2][i+2];
+           clone[j+2][i+2]=temp2;
+           temp2=clone[j+2][i+1];
+           clone[j+2][i+1]=temp;
+           temp=clone[j+2][i];
+           clone[j+2][i]=temp2;
+           temp2=clone[j+1][i];
+           clone[j+1][i]=temp;
+           temp=clone[j][i];
+           clone[j][i]=temp2;
+           clone[j][i+1]=temp;
+           
+           
+        return clone;
+    }
+
+    private void mixed() {
+       for(int k=0;k<sizeY-2;k+=3){}
     }
    
     

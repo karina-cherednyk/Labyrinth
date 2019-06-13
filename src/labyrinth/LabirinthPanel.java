@@ -38,7 +38,7 @@ public class LabirinthPanel extends JPanel{
     BufferedImage backGroung;
     BufferedImage flag;
     Point finish;
-    int x = 0; int y = 0;
+    int x; int y;
     String roadRout="/icons/road.jpg";
     String grassRout="/icons/grass.jpg";
     String sandRout="/icons/sand.jpg";
@@ -56,6 +56,31 @@ public class LabirinthPanel extends JPanel{
                 requestFocus();
             }
         });
+        addMouseListener(new MouseAdapter() {
+            int i,j;
+             public void mouseClicked(MouseEvent e){
+                Point p = e.getPoint();
+                i=p.x/size;
+                j=p.y/size;
+                i=findStart(i);
+                j=findStart(j);
+                if(findStart(x)==i&&findStart(y)==j)
+                    return;
+                if((i==0&&j==0)||(i+2==blocks[1].length&&j+2==blocks.length))
+                    return;
+                else
+                    blocks=rc.revers(i,j);
+                repaint();
+            }
+             private int findStart(int s){
+                 if(s%3==1)
+                    return s-1;
+                 else if(s%3==2)
+                     return s-2;
+                 else
+                     return s;
+             }
+        });
         this.addKeyListener(new KeyAdapter() {
              @Override
     public void keyPressed(KeyEvent e) {
@@ -66,10 +91,10 @@ public class LabirinthPanel extends JPanel{
         else if (code == KeyEvent.VK_LEFT){ if(x-1>=0&&blocks[y][x-1]!=false)x--; }
         else if (code == KeyEvent.VK_RIGHT){ if(x+1<blocks[1].length&&blocks[y][x+1]!=false)x++; }
         else return;
+       repaint();
         if(x==finish.x&&y==finish.y){
             JOptionPane.showConfirmDialog(null, "Win", "win", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
         }
-        repaint();
     }
         });
     
@@ -115,11 +140,11 @@ public class LabirinthPanel extends JPanel{
     }
 
     public void regenerate() {
+        x=1;y=1;
         setSize();
         rc.setSize(level);
         rc.creator();
-       
-        blocks=rc.getArray();
+       blocks=rc.getClone();
          addFinish();
         try{
             int k =rg.nextInt(3); 
