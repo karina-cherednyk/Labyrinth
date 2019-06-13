@@ -87,6 +87,7 @@ public class LabirinthCreator{
                     array[0][0] = true;
                     array[0][1] = true;
                     array[1][0] = true;
+                    array[sizeX-2][sizeY-2]=true;
                 }
                 stack.pop();
             }
@@ -158,7 +159,13 @@ public class LabirinthCreator{
     }
 
     private void mixed() {
-       for(int k=0;k<sizeY-2;k+=3){}
+       for(int k=0;k<sizeX-2;k+=3){
+           for(int p=0;p<sizeY-2;p+=3){
+               if(k==0&&p==0)
+                   continue;
+               System.out.println(p + " "+k);
+                revers( p,k);}
+       }
     }
    
     
