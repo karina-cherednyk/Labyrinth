@@ -6,6 +6,7 @@
 package labyrinth;
 
 import java.awt.Point;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,23 +21,16 @@ public class LabirinthCreator{
     int sizeX;
     int sizeY;
     Random rg;
-     boolean [][] array;
-     boolean [][] clone;
-      private int bestScore = 0;
-    private Point start;
-    private final Point end = new Point(0, 1);
+    boolean [][] array;
+    boolean [][] clone;
+    private int bestScore;
 
     public LabirinthCreator() {
-        rg = new Random();
-        setSize(1);
-            
-        
+        rg = new Random();   
     }
     public void creator(){
-         array=new boolean[sizeX][sizeY];
-         System.out.println("x le"+array.length);
+         array=new boolean[sizeX][sizeY]; 
      for (int i = 0; i < sizeX; ++i) {
-          System.out.println(array[i].length);
             for (int j = 0; j < sizeY; ++j) {
                 array[i][j] = i % 2 != 0 && j % 2 != 0
                         && i < sizeX - 1 && j < sizeY - 1;
@@ -82,7 +76,6 @@ public class LabirinthCreator{
             } else {
                 if (bestScore < stack.size()) {
                     bestScore = stack.size();
-                    start = current;
                     // exit
                     array[0][0] = true;
                     array[0][1] = true;
@@ -92,18 +85,10 @@ public class LabirinthCreator{
                 stack.pop();
             }
         }
-        clone=array.clone();
+      clone=new boolean[sizeX][sizeY]; 
+      for(int i =0 ;i<array.length;i++){
+        clone[i]=Arrays.copyOf(array[i], array[i].length);}
         mixed();
-    }
-
-     public boolean isCrossroad(int x, int y) {
-        return isUsedCell(x, y);
-    }
-
-    public boolean canPlayerGoTo(int x, int y) {
-        if (x < 0 || y < 0) return false;
-        if (x > sizeX || y > sizeY) return false;
-        return array[y][x];
     }
 
     private boolean isUsedCell(int x, int y) {
@@ -153,18 +138,32 @@ public class LabirinthCreator{
            temp=clone[j][i];
            clone[j][i]=temp2;
            clone[j][i+1]=temp;
-           
-           
+          return clone;
+    }
+    public  boolean [][] correctOne(int i,int j){
+        System.out.println();
+          System.out.println(clone[j][i]);
+        clone[j][i]=array[j][i];
+        clone[j][i+1]=array[j][i+1];
+        clone[j][i+2]=array[j][i+2];
+        clone[j+1][i]=array[j+1][i];
+        clone[j+2][i]=array[j+2][i];
+        clone[j+1][i+2]=array[j+1][i+2];
+        clone[j+2][i+1]=array[j+2][i+1];
+        clone[j+2][i+2]=array[j+2][i+2];
         return clone;
     }
 
     private void mixed() {
+        int a=0;
        for(int k=0;k<sizeX-2;k+=3){
            for(int p=0;p<sizeY-2;p+=3){
                if(k==0&&p==0)
                    continue;
-               System.out.println(p + " "+k);
-                revers( p,k);}
+               a=rg.nextInt(3);
+               while(a>0){
+                revers( p,k);
+               a--;}}
        }
     }
    

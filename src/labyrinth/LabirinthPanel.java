@@ -27,8 +27,9 @@ import javax.swing.JPanel;
  * @author User
  */
 public class LabirinthPanel extends JPanel{
+ Tools tools;
     LabirinthCreator rc;
-    int level=1;
+
    int size;
     Random rg;
     boolean [] [] blocks;
@@ -45,12 +46,14 @@ public class LabirinthPanel extends JPanel{
     String swampRout="/icons/swamp.jpg";
     String waterRout="/icons/water.jpg";
     String lavaRout="/icons/lava.jpg";
-    String palyerRout="/icons/man.png";
+    String playerRout;
   
-    LabirinthPanel(){
-        rg=new Random();
+    LabirinthPanel(Tools t){
+        tools=t;
+        playerRout=tools.playerRout;
+      rg=new Random();
         rc = new LabirinthCreator();
-           regenerate();
+        regenerate();
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 requestFocus();
@@ -66,10 +69,21 @@ public class LabirinthPanel extends JPanel{
                 j=findStart(j);
                 if(findStart(x)==i&&findStart(y)==j)
                     return;
-                if((i==0&&j==0)||(i+2==blocks[1].length&&j+2==blocks.length))
+                if(i==0&&j==0)
                     return;
                 else
-                    blocks=rc.revers(i,j);
+                 if(tools.help1){
+                     blocks=rc.correctOne(i,j);
+                     tools.help1=false;
+                   tools.coins-=5;
+                 }
+                 else if(tools.help2){
+                        blocks=rc.getArray();
+                        tools.help2=false;
+                        tools.coins-=10;
+                       
+                }else
+                         blocks=rc.revers(i,j);
                 repaint();
             }
              private int findStart(int s){
@@ -94,6 +108,12 @@ public class LabirinthPanel extends JPanel{
        repaint();
         if(x==finish.x&&y==finish.y){
             JOptionPane.showConfirmDialog(null, "Win", "win", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+            if(tools.level==1)
+             tools.coins+=5;
+            else if(tools.level==2)
+              tools.coins+=7;
+            else 
+              tools.coins+=10; 
         }
     }
         });
@@ -109,9 +129,9 @@ public class LabirinthPanel extends JPanel{
       return img;
       }
      public void setSize(){
-         if(level==1)
+         if(tools.level==1)
              size=45;
-         else if(level==2)
+         else if(tools.level==2)
              size=24;
          else
              size=15;
@@ -142,7 +162,7 @@ public class LabirinthPanel extends JPanel{
     public void regenerate() {
         x=1;y=1;
         setSize();
-        rc.setSize(level);
+        rc.setSize(tools.level);
         rc.creator();
        blocks=rc.getClone();
          addFinish();
@@ -163,11 +183,15 @@ public class LabirinthPanel extends JPanel{
             }
             
             
-        player = setScaledInstance(palyerRout);
+        player = setScaledInstance(playerRout);
          flag = setScaledInstance("/icons/flag.png");
         }catch(IOException e){}
         repaint();
     }
+    public void setPlayer(String rout){
+        playerRout=rout;
+    }
+  
     
     
 }

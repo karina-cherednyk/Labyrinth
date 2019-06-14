@@ -5,17 +5,30 @@
  */
 package labyrinth;
 
+import java.awt.Desktop;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+import labyrinth.LabirinthPanel;
+
 /**
  *
  * @author k256
  */
 public class Labyrinth extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Labyrinth
-     */
+   Tools t;
+   Game g ;
+   Settings s;
+    boolean game;
+    File fileToOpen ;
     public Labyrinth() {
+         t = new Tools(this);
+        g = new Game(t);
+        s=new Settings(t);
         initComponents();
+       
+       
     }
 
     /**
@@ -42,18 +55,43 @@ public class Labyrinth extends javax.swing.JFrame {
 
         settingsBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 24)); // NOI18N
         settingsBut.setText("SETTINGS");
+        settingsBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingsButActionPerformed(evt);
+            }
+        });
 
         coinsBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 24)); // NOI18N
         coinsBut.setText("FREE COINS");
+        coinsBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coinsButActionPerformed(evt);
+            }
+        });
 
         startBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 24)); // NOI18N
         startBut.setText("START GAME");
+        startBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButActionPerformed(evt);
+            }
+        });
 
         exitBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 24)); // NOI18N
         exitBut.setText("EXIT");
+        exitBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButActionPerformed(evt);
+            }
+        });
 
         helpBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 24)); // NOI18N
         helpBut.setText("HELP");
+        helpBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpButActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainCanvasLayout = new javax.swing.GroupLayout(mainCanvas);
         mainCanvas.setLayout(mainCanvasLayout);
@@ -64,7 +102,7 @@ public class Labyrinth extends javax.swing.JFrame {
                 .addGroup(mainCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(helpBut, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(exitBut, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(coinsBut, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                    .addComponent(coinsBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(settingsBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(startBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -121,6 +159,49 @@ public class Labyrinth extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButActionPerformed
+        dispose();
+    }//GEN-LAST:event_exitButActionPerformed
+
+    private void helpButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButActionPerformed
+         try {
+                    fileToOpen = new File("help.docx");
+                    Desktop.getDesktop().open(fileToOpen);
+
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+    }//GEN-LAST:event_helpButActionPerformed
+
+    private void coinsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coinsButActionPerformed
+         try {  
+             if(!game){
+                    fileToOpen = new File("game1.mp4");
+                    game=true;
+                  
+             } else
+                  fileToOpen = new File("game2.mp4");
+                 Desktop.getDesktop().open(fileToOpen);
+                 t.coins+=5;
+               
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+    }//GEN-LAST:event_coinsButActionPerformed
+
+    private void startButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButActionPerformed
+        g.newGame();
+        g.setVisible(true);
+        g.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        setVisible(false);
+        
+    }//GEN-LAST:event_startButActionPerformed
+
+    private void settingsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButActionPerformed
+             s.setVisible(true);
+            //setVisible(false);
+    }//GEN-LAST:event_settingsButActionPerformed
 
     /**
      * @param args the command line arguments

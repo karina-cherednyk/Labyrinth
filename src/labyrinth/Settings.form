@@ -78,7 +78,7 @@
     </Container>
     <Container class="javax.swing.JPanel" name="canvas">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Canvas2()"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Canvas2(tools)"/>
       </AuxValues>
 
       <Layout>
