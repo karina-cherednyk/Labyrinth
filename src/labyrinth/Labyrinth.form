@@ -56,7 +56,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="helpBut" min="-2" pref="125" max="-2" attributes="0"/>
                       <Component id="exitBut" min="-2" pref="125" max="-2" attributes="0"/>
-                      <Component id="coinsBut" pref="182" max="32767" attributes="0"/>
+                      <Component id="coinsBut" max="32767" attributes="0"/>
                       <Component id="settingsBut" alignment="0" max="32767" attributes="0"/>
                       <Component id="startBut" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -90,6 +90,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="SETTINGS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="settingsButActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="coinsBut">
           <Properties>
@@ -98,6 +101,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="FREE COINS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="coinsButActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="startBut">
           <Properties>
@@ -106,6 +112,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="START GAME"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startButActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="exitBut">
           <Properties>
@@ -114,6 +123,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="EXIT"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitButActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="helpBut">
           <Properties>
@@ -122,6 +134,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="HELP"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="helpButActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

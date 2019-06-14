@@ -6,6 +6,8 @@
 package labyrinth;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 
@@ -14,10 +16,12 @@ import javax.swing.JButton;
  * @author k256
  */
 public class Canvas2 extends Canvas{
-
+Tools tools;
     JButton[] b = {new JButton("EASY"),new JButton("MEDIUM"),new JButton("HARD"),new JButton("AVATAR")};
-      public Canvas2(){
+      public Canvas2(Tools t){
+       
         super("D2 R2 D2 R2 D4 L4 U2 R4 U2 R8 D4 R2 U5 L1 U1 L1 U2 R1 U2 L1 U2 R9 D7 L1 D2 R1 D2 L3 U1 L2 D2 R2 U5 L2 D1 L2 U1 L1 U1 L3 U5 L2 D2 L6 D1 L2","settings",1,5);
+        tools=t;
         addButtons();
        }        
  
@@ -31,5 +35,24 @@ public class Canvas2 extends Canvas{
      b[2].setLocation(7*size, 11*size);
      b[3].setSize(4*size, 4*size);
      b[3].setLocation(17*size, 3*size);
+     b[0].addActionListener(new ActionListener(){ 
+         @Override
+         public void actionPerformed(ActionEvent e) {
+             tools.level=1;
+         }
+     });
+      b[1].addActionListener(new ActionListener(){ 
+         @Override
+         public void actionPerformed(ActionEvent e) {
+             tools.level=2;
+         }
+     });
+       b[2].addActionListener(new ActionListener(){ 
+         @Override
+         public void actionPerformed(ActionEvent e) {
+             tools.level=3;
+         }
+     });
+     
      }
 }
