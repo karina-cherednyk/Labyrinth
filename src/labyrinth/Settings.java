@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package labyrinth;
-import javax.swing.JButton;
+import java.awt.Image;
+import javax.swing.*;
 /**
  *
  * @author k256
@@ -30,7 +31,17 @@ public class Settings extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        canvas = new Canvas2(tools);
+        canvas = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        exitBut = new javax.swing.JButton();
+        easyBut = new javax.swing.JToggleButton();
+        mediumBut = new javax.swing.JToggleButton();
+        hardBut = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
+        nameField = new javax.swing.JTextField();
+        avatarBut = new javax.swing.JButton();
+        timeBox = new javax.swing.JCheckBox();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -47,22 +58,158 @@ public class Settings extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+
+        exitBut.setBackground(new java.awt.Color(0, 0, 0));
+        exitBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 24)); // NOI18N
+        exitBut.setForeground(new java.awt.Color(255, 255, 255));
+        exitBut.setText("EXIT");
+        exitBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButActionPerformed(evt);
+            }
+        });
+
+        easyBut.setBackground(new java.awt.Color(0, 0, 0));
+        easyBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        easyBut.setForeground(new java.awt.Color(255, 255, 255));
+        easyBut.setText("EASY");
+        easyBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                easyButActionPerformed(evt);
+            }
+        });
+
+        mediumBut.setBackground(new java.awt.Color(0, 0, 0));
+        mediumBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        mediumBut.setForeground(new java.awt.Color(255, 255, 255));
+        mediumBut.setText("MEDIUM");
+        mediumBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mediumButActionPerformed(evt);
+            }
+        });
+
+        hardBut.setBackground(new java.awt.Color(0, 0, 0));
+        hardBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        hardBut.setForeground(new java.awt.Color(255, 255, 255));
+        hardBut.setText("HARD");
+        hardBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hardButActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("PLAYER NAME:");
+
+        nameField.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        nameField.setText("player");
+
+        avatarBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        avatarBut.setForeground(new java.awt.Color(255, 255, 255));
+        avatarBut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/man.png"))); // NOI18N
+        avatarBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avatarButActionPerformed(evt);
+            }
+        });
+
+        timeBox.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        timeBox.setForeground(new java.awt.Color(255, 255, 255));
+        timeBox.setText("ADD TIME LIMIT");
+        timeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeBoxActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("ADD TIPS");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exitBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(timeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(hardBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(easyBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(mediumBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nameField)
+                            .addComponent(avatarBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(easyBut, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mediumBut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hardBut, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(avatarBut, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(timeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(exitBut)
+                .addGap(35, 35, 35))
+        );
+
+        int w = 150;
+        int h = 150;
+        ii[0] =        (new ImageIcon(getClass().getResource("/icons/alien.png"))).getImage().getScaledInstance(w,h, Image.SCALE_SMOOTH);
+        ii[1] =        (new ImageIcon(getClass().getResource("/icons/avatar.png"))).getImage().getScaledInstance(w,h, Image.SCALE_SMOOTH);
+        ii[2] =        (new ImageIcon(getClass().getResource("/icons/boy.png"))).getImage().getScaledInstance(w,h, Image.SCALE_SMOOTH);
+        ii[3] =        (new ImageIcon(getClass().getResource("/icons/girl.png"))).getImage().getScaledInstance(w,h, Image.SCALE_SMOOTH);
+        ii[4] =        (new ImageIcon(getClass().getResource("/icons/woman.png"))).getImage().getScaledInstance(w,h, Image.SCALE_SMOOTH);
+        ii[5] =        (new ImageIcon(getClass().getResource("/icons/man.png"))).getImage().getScaledInstance(w,h, Image.SCALE_SMOOTH);
+        ii[6] =        (new ImageIcon(getClass().getResource("/icons/ninja.png"))).getImage().getScaledInstance(w,h, Image.SCALE_SMOOTH);
+        ii[7] =        (new ImageIcon(getClass().getResource("/icons/rabbit.png"))).getImage().getScaledInstance(w,h, Image.SCALE_SMOOTH);
+
+        avatarBut.setIcon(new ImageIcon(ii[avatarIndex]));
+
         javax.swing.GroupLayout canvasLayout = new javax.swing.GroupLayout(canvas);
         canvas.setLayout(canvasLayout);
         canvasLayout.setHorizontalGroup(
             canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(canvasLayout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(139, 139, 139))
         );
         canvasLayout.setVerticalGroup(
             canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -77,11 +224,41 @@ public class Settings extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(canvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButActionPerformed
+        dispose();
+    }//GEN-LAST:event_exitButActionPerformed
+
+    private void timeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_timeBoxActionPerformed
+
+    private void avatarButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarButActionPerformed
+        int w = avatarBut.getWidth();
+        int h = avatarBut.getHeight();
+
+        avatarIndex = (avatarIndex+1) % ii.length;
+        avatarBut.setIcon(new ImageIcon(ii[avatarIndex]));
+
+    }//GEN-LAST:event_avatarButActionPerformed
+
+    private void easyButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButActionPerformed
+   tools.level = 1;
+    }//GEN-LAST:event_easyButActionPerformed
+
+    private void mediumButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButActionPerformed
+   tools.level = 2;
+    }//GEN-LAST:event_mediumButActionPerformed
+
+    private void hardButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButActionPerformed
+   tools.level = 3;
+    }//GEN-LAST:event_hardButActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -119,8 +296,20 @@ public class Settings extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton avatarBut;
     private javax.swing.JPanel canvas;
+    private javax.swing.JToggleButton easyBut;
+    private javax.swing.JButton exitBut;
+    private javax.swing.JToggleButton hardBut;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JToggleButton mediumBut;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JCheckBox timeBox;
     // End of variables declaration//GEN-END:variables
+int avatarIndex = 4;
+Image[] ii = new Image[8];
 }
