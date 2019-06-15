@@ -141,8 +141,6 @@ public class LabirinthCreator{
           return clone;
     }
     public  boolean [][] correctOne(int i,int j){
-        System.out.println();
-          System.out.println(clone[j][i]);
         clone[j][i]=array[j][i];
         clone[j][i+1]=array[j][i+1];
         clone[j][i+2]=array[j][i+2];
