@@ -5,6 +5,7 @@
  */
 package labyrinth;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,6 +16,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
@@ -33,7 +35,7 @@ public class LabirinthPanel extends JPanel{
    int size;
     Random rg;
     boolean [] [] blocks;
-      BufferedImage canNotGo;
+    BufferedImage canNotGo;
     BufferedImage canGo;
     BufferedImage player;
     BufferedImage backGroung;
@@ -48,19 +50,38 @@ public class LabirinthPanel extends JPanel{
     String lavaRout="/icons/lava.jpg";
     String playerRout;
   
+    private int xHovered=-1;
+    private int yHovered=-1;
+    
     LabirinthPanel(Tools t){
         tools=t;
         playerRout=tools.playerRout;
       rg=new Random();
         rc = new LabirinthCreator();
         regenerate();
+        requestFocus();
         addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e){
                 requestFocus();
             }
         });
+        addMouseMotionListener(new MouseAdapter(){
+             int i,j;
+                    @Override
+            public void mouseMoved(MouseEvent e){
+                Point p = e.getPoint();
+                i=p.x/size;
+                j=p.y/size;
+                xHovered=findStart(i);
+                yHovered=findStart(j);
+                repaint();
+            };
+        });
         addMouseListener(new MouseAdapter() {
             int i,j;
+
+            @Override
              public void mouseClicked(MouseEvent e){
                 Point p = e.getPoint();
                 i=p.x/size;
@@ -86,14 +107,7 @@ public class LabirinthPanel extends JPanel{
                          blocks=rc.revers(i,j);
                 repaint();
             }
-             private int findStart(int s){
-                 if(s%3==1)
-                    return s-1;
-                 else if(s%3==2)
-                     return s-2;
-                 else
-                     return s;
-             }
+           
         });
         this.addKeyListener(new KeyAdapter() {
              @Override
@@ -120,6 +134,14 @@ public class LabirinthPanel extends JPanel{
     
         
     }
+      private int findStart(int s){
+                 if(s%3==1)
+                    return s-1;
+                 else if(s%3==2)
+                     return s-2;
+                 else
+                     return s;
+             }
      private BufferedImage setScaledInstance(String path) throws IOException{
       BufferedImage temp = ImageIO.read(getClass().getResource(path));
       Image toolkitImage = temp.getScaledInstance(size, size, Image.SCALE_SMOOTH);
@@ -145,11 +167,15 @@ public class LabirinthPanel extends JPanel{
     super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(canNotGo, 0,0,getWidth(),getHeight(),null);
-                for(int i=0; i<blocks.length; i++){
+                for(int i=0; i<blocks.length; i++){  
             for(int j=0; j<blocks[i].length;j++){
+            if((i-yHovered)>=0 && (i-yHovered)<3 && j==xHovered)g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.75f));
+            else if( j==xHovered+3)g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
             if(blocks[i][j]==false)g2.drawImage(canNotGo, j*size, i*size, null);
             else if(blocks[i][j]==true) g2.drawImage(canGo, j*size, i*size, null);
+            if(i+1==blocks.length&& j%3==0)g2.drawLine(j*size,0,j*size,getHeight());
            }
+             if(i%3==0)g2.drawLine(0,i*size,getWidth(),i*size);
         }
         g2.setColor(Color.GREEN);
         Rectangle r = new Rectangle(size*finish.x,size*finish.y, size,size);
