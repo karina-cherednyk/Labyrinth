@@ -43,7 +43,7 @@ public class Settings extends javax.swing.JFrame {
         timeBox = new javax.swing.JCheckBox();
         jCheckBox1 = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,7 +148,7 @@ public class Settings extends javax.swing.JFrame {
                     .addComponent(exitBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(timeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(timeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(hardBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(easyBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -232,7 +232,11 @@ public class Settings extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButActionPerformed
+        tools.main.jLabel2.setText("PLAYER: "+nameField.getText());
+        tools.setPlayer(nameField.getText());
         dispose();
+        tools.main.setVisible(true);
+        
     }//GEN-LAST:event_exitButActionPerformed
 
     private void timeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeBoxActionPerformed
@@ -242,22 +246,28 @@ public class Settings extends javax.swing.JFrame {
     private void avatarButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarButActionPerformed
         int w = avatarBut.getWidth();
         int h = avatarBut.getHeight();
-
         avatarIndex = (avatarIndex+1) % ii.length;
         avatarBut.setIcon(new ImageIcon(ii[avatarIndex]));
+        tools.playerRout=rout[avatarIndex];
 
     }//GEN-LAST:event_avatarButActionPerformed
 
     private void easyButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButActionPerformed
    tools.level = 1;
+   mediumBut.setSelected(false);
+   hardBut.setSelected(false);
     }//GEN-LAST:event_easyButActionPerformed
 
     private void mediumButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButActionPerformed
    tools.level = 2;
+   easyBut.setSelected(false);
+   hardBut.setSelected(false);
     }//GEN-LAST:event_mediumButActionPerformed
 
     private void hardButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButActionPerformed
    tools.level = 3;
+   easyBut.setSelected(false);
+   mediumBut.setSelected(false);
     }//GEN-LAST:event_hardButActionPerformed
 
 //    /**
@@ -312,4 +322,5 @@ public class Settings extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 int avatarIndex = 4;
 Image[] ii = new Image[8];
+String [] rout= new String[]{"/icons/alien.png","/icons/avatar.png","/icons/boy.png","/icons/girl.png","/icons/woman.png","/icons/man.png","/icons/ninja.png","/icons/rabbit.png"};
 }

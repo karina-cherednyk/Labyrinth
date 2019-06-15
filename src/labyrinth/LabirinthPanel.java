@@ -48,14 +48,12 @@ public class LabirinthPanel extends JPanel{
     String swampRout="/icons/swamp.jpg";
     String waterRout="/icons/water.jpg";
     String lavaRout="/icons/lava.jpg";
-    String playerRout;
   
     private int xHovered=-1;
     private int yHovered=-1;
     
     LabirinthPanel(Tools t){
         tools=t;
-        playerRout=tools.playerRout;
       rg=new Random();
         rc = new LabirinthCreator();
         regenerate();
@@ -96,12 +94,12 @@ public class LabirinthPanel extends JPanel{
                  if(tools.help1){
                      blocks=rc.correctOne(i,j);
                      tools.help1=false;
-                   tools.coins-=5;
+                  tools.setCoins( tools.coins-=5);
                  }
                  else if(tools.help2){
                         blocks=rc.getArray();
                         tools.help2=false;
-                        tools.coins-=10;
+                        tools.setCoins(tools.coins-=15);
                        
                 }else
                          blocks=rc.revers(i,j);
@@ -122,12 +120,13 @@ public class LabirinthPanel extends JPanel{
        repaint();
         if(x==finish.x&&y==finish.y){
             JOptionPane.showConfirmDialog(null, "Win", "win", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+            //тут + остановка таймера и добавление в рекорды+открытие вы выиграли и там 2 кнопки новая игра и главное меню
             if(tools.level==1)
-             tools.coins+=5;
+             tools.setCoins(tools.coins+=5);
             else if(tools.level==2)
-              tools.coins+=7;
+             tools.setCoins(tools.coins+=7);
             else 
-              tools.coins+=10; 
+              tools.setCoins(tools.coins+=10); 
         }
     }
         });
@@ -209,14 +208,12 @@ public class LabirinthPanel extends JPanel{
             }
             
             
-        player = setScaledInstance(playerRout);
+        player = setScaledInstance(tools.playerRout);
          flag = setScaledInstance("/icons/flag.png");
         }catch(IOException e){}
         repaint();
     }
-    public void setPlayer(String rout){
-        playerRout=rout;
-    }
+   
   
     
     

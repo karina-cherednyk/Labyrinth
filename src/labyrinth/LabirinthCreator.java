@@ -121,6 +121,7 @@ public class LabirinthCreator{
         }
     }
     public    boolean [][] revers(int i,int j){
+        try{
            boolean temp;
            boolean temp2;
            temp=clone[j][i+2];
@@ -137,7 +138,9 @@ public class LabirinthCreator{
            clone[j+1][i]=temp;
            temp=clone[j][i];
            clone[j][i]=temp2;
-           clone[j][i+1]=temp;
+           clone[j][i+1]=temp;}catch(ArrayIndexOutOfBoundsException e){
+               return clone;
+           }
           return clone;
     }
     public  boolean [][] correctOne(int i,int j){
