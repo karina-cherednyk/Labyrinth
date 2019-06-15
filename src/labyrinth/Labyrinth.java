@@ -259,7 +259,7 @@ public class Labyrinth extends javax.swing.JFrame {
              } else
                   fileToOpen = new File("game2.mp4");
                  Desktop.getDesktop().open(fileToOpen);
-                 t.coins+=5;
+                 t.setCoins(t.coins+=5);
                
                 } catch (IOException e1) {
                     e1.printStackTrace();
@@ -276,7 +276,7 @@ public class Labyrinth extends javax.swing.JFrame {
 
     private void settingsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButActionPerformed
              s.setVisible(true);
-            //setVisible(false);
+            setVisible(false);
     }//GEN-LAST:event_settingsButActionPerformed
 
     /**
@@ -319,8 +319,8 @@ public class Labyrinth extends javax.swing.JFrame {
     private javax.swing.JButton exitBut;
     private javax.swing.JButton helpBut;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
