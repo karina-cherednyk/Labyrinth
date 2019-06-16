@@ -103,7 +103,7 @@ public class LabirinthPanel extends JPanel{
                        
                 }else{
                         
-                         blocks=rc.revers(i,j,true);}
+                         blocks=rc.revers(i,j);}
                 repaint();
             }
            

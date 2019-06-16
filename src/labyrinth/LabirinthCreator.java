@@ -120,10 +120,8 @@ public class LabirinthCreator{
              sizeY=123;
         }
     }
-    public    boolean [][] revers(int i,int j,boolean first){
-        if(first){
-            revers(i,j,false);
-        }
+    public    boolean [][] revers(int i,int j){
+for(int k=0;k<2;k++){
         try{
            boolean temp;
            boolean temp2;
@@ -143,7 +141,7 @@ public class LabirinthCreator{
            clone[j][i]=temp2;
            clone[j][i+1]=temp;}catch(ArrayIndexOutOfBoundsException e){
                return clone;
-           }
+           }}
           return clone;
     }
     public  boolean [][] correctOne(int i,int j){
@@ -166,7 +164,7 @@ public class LabirinthCreator{
                    continue;
                a=rg.nextInt(3);
                while(a>0){
-                 revers( p,k,true);
+                 revers( p,k);
                a--;}}
        }
     }

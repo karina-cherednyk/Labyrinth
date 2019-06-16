@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/k256/Documents/NetBeansProjects/Labyrinth/src/labyrinth/Game.java</file>
-            <file>file:/C:/Users/k256/Documents/NetBeansProjects/Labyrinth/src/labyrinth/Settings.java</file>
-            <file>file:/C:/Users/k256/Documents/NetBeansProjects/Labyrinth/src/labyrinth/LabirinthPanel.java</file>
-            <file>file:/C:/Users/k256/Documents/NetBeansProjects/Labyrinth/src/labyrinth/Records.java</file>
-            <file>file:/C:/Users/k256/Documents/NetBeansProjects/Labyrinth/src/labyrinth/Tools.java</file>
-            <file>file:/C:/Users/k256/Documents/NetBeansProjects/Labyrinth/src/labyrinth/LabirinthCreator.java</file>
-            <file>file:/C:/Users/k256/Documents/NetBeansProjects/Labyrinth/src/labyrinth/Labyrinth.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/LabirinthPanel.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/Settings.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/LabirinthCreator.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/Canvas.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/Tools.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/Canvas2.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/Game.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/Canvas1.java</file>
+            <file>file:/D:/game/Labyrinth/src/labyrinth/Labyrinth.java</file>
         </group>
     </open-files>
 </project-private>

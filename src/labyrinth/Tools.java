@@ -6,8 +6,7 @@
 package labyrinth;
 
 import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 /**
  *
