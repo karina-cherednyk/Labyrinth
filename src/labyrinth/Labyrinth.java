@@ -20,12 +20,14 @@ public class Labyrinth extends javax.swing.JFrame {
    Tools t;
    Game g ;
    Settings s;
+   Records r;
     boolean game;
     File fileToOpen ;
     public Labyrinth() {
          t = new Tools(this);
         g = new Game(t);
         s=new Settings(t);
+        r=new Records();
         initComponents();
        
        
@@ -121,6 +123,11 @@ public class Labyrinth extends javax.swing.JFrame {
         recordsBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
         recordsBut.setForeground(new java.awt.Color(255, 255, 255));
         recordsBut.setText("RECORDS");
+        recordsBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recordsButActionPerformed(evt);
+            }
+        });
 
         exitBut.setBackground(new java.awt.Color(0, 0, 0));
         exitBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 24)); // NOI18N
@@ -279,6 +286,10 @@ public class Labyrinth extends javax.swing.JFrame {
              s.setVisible(true);
             setVisible(false);
     }//GEN-LAST:event_settingsButActionPerformed
+
+    private void recordsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordsButActionPerformed
+        r.setVisible(true);
+    }//GEN-LAST:event_recordsButActionPerformed
 
     /**
      * @param args the command line arguments

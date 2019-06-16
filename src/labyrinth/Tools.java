@@ -19,7 +19,8 @@ public class Tools {
     boolean onTime;
     Labyrinth main;
     boolean help1;
-    boolean help2;
+    boolean darkness=true;
+    boolean help2=true;
     HashMap<String,Integer> players; 
     String player="player";
    
@@ -44,6 +45,19 @@ public class Tools {
     public void setCoins(int c){
         players.put(player, c);
         main.jLabel3.setText("COINS: "+c);
+    }
+    public void addWinner(){
+          String time = main.g.timeLab.getText().substring(13);
+        switch(level){
+            case 1:{
+             
+                break;}
+            case 2:{
+                
+                break;}
+            default:{
+           //  main.r.hardTable.add(player,time);
+                     }}
     }
     
     

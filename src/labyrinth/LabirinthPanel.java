@@ -7,6 +7,7 @@ package labyrinth;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -120,9 +121,11 @@ public class LabirinthPanel extends JPanel{
         else return;
        repaint();
         if(x==finish.x&&y==finish.y){
+             tools.main.g.timerUp.cancel();
+             tools.addWinner();
             JOptionPane.showConfirmDialog(null, "Win", "win", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
             //тут + остановка таймера и добавление в рекорды+открытие вы выиграли и там 2 кнопки новая игра и главное меню
-         
+        
             if(tools.level==1)
              tools.setCoins(tools.coins+=5);
             else if(tools.level==2)
@@ -151,15 +154,7 @@ public class LabirinthPanel extends JPanel{
       img.getGraphics().drawImage(toolkitImage, 0, 0, null);
       return img;
       }
-     public void setSize(){
-         if(tools.level==1)
-             size=45;
-         else if(tools.level==2)
-             size=24;
-         else
-             size=15;
-         
-     }
+
      public void addFinish(){
         finish=new Point(blocks[1].length-2, blocks.length-2);
      }
@@ -167,7 +162,7 @@ public class LabirinthPanel extends JPanel{
     public void paintComponent(Graphics g){
     super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(canNotGo, 0,0,getWidth(),getHeight(),null);
+      //  g2.drawImage(canNotGo, 0,0,getWidth(),getHeight(),null);
                 for(int i=0; i<blocks.length; i++){  
             for(int j=0; j<blocks[i].length;j++){
             if((i-yHovered)>=0 && (i-yHovered)<3 && j==xHovered)g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.75f));
@@ -178,6 +173,13 @@ public class LabirinthPanel extends JPanel{
            }
              if(i%3==0)g2.drawLine(0,i*size,getWidth(),i*size);
         }
+                if(tools.darkness){
+                    g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.95f));
+                        for(int i=0; i<blocks.length; i++){  
+                        for(int j=0; j<blocks[i].length;j++){  if(canBeDark(j,i))g2.fillRect(j*size, i*size, size, size);}
+                }
+                   g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+                }
         g2.setColor(Color.GREEN);
         Rectangle r = new Rectangle(size*finish.x,size*finish.y, size,size);
         g2.fill(r);
@@ -185,11 +187,20 @@ public class LabirinthPanel extends JPanel{
         g2.drawImage(flag, size*finish.x,size*finish.y,null);
         g2.drawImage(player, x*size, y*size, null);
     }
+    private boolean canBeDark(int j,int i){
+    int x0 = (int)x/3 * 3 + 1;
+    int y0 = (int)y/3 * 3 + 1;
+    return !(Math.abs(x0-j)<5 && Math.abs(y0-i)<5);
+    }
 
+  private void setSize(){
+             size = 800/rc.sizeX;
+             setPreferredSize(new Dimension(rc.sizeY*size, rc.sizeX*size));    
+    }
     public void regenerate() {
         x=1;y=1;
-        setSize();
         rc.setSize(tools.level);
+        setSize();
         rc.creator();
        blocks=rc.getClone();
          addFinish();
