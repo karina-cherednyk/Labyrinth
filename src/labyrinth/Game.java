@@ -30,15 +30,10 @@ int timePassed=0;
      */
     public Game(Tools t) {
         tools=t;
-       
-        initComponents();
-         
-         timerUp.schedule(tt, 0, 1000);
-      
-        tipsMenu.hide();
-        //1 second
-        //   timerUp.schedule(tt, 0, 1000);
-        jPanel2.requestFocus();
+       initComponents();
+       timerUp.schedule(tt, 0, 1000);
+      tipsMenu.hide();
+      jPanel2.requestFocus();
     }
  public void newGame(){
        timePassed=0; 
