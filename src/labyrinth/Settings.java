@@ -29,6 +29,7 @@ public class Settings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         canvas = new javax.swing.JPanel();
@@ -41,7 +42,7 @@ public class Settings extends javax.swing.JFrame {
         nameField = new javax.swing.JTextField();
         avatarBut = new javax.swing.JButton();
         timeBox = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        addDarkBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -79,6 +80,7 @@ public class Settings extends javax.swing.JFrame {
         });
 
         easyBut.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(easyBut);
         easyBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
         easyBut.setForeground(new java.awt.Color(255, 255, 255));
         easyBut.setText("EASY");
@@ -89,6 +91,7 @@ public class Settings extends javax.swing.JFrame {
         });
 
         mediumBut.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(mediumBut);
         mediumBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
         mediumBut.setForeground(new java.awt.Color(255, 255, 255));
         mediumBut.setText("MEDIUM");
@@ -99,6 +102,7 @@ public class Settings extends javax.swing.JFrame {
         });
 
         hardBut.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(hardBut);
         hardBut.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
         hardBut.setForeground(new java.awt.Color(255, 255, 255));
         hardBut.setText("HARD");
@@ -134,9 +138,9 @@ public class Settings extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("ADD TIPS");
+        addDarkBox.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        addDarkBox.setForeground(new java.awt.Color(255, 255, 255));
+        addDarkBox.setText("ADD DARKNESS");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -148,7 +152,7 @@ public class Settings extends javax.swing.JFrame {
                     .addComponent(exitBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(timeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(timeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(hardBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(easyBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -157,7 +161,7 @@ public class Settings extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nameField)
                             .addComponent(avatarBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))))
+                            .addComponent(addDarkBox, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -179,7 +183,7 @@ public class Settings extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(timeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addDarkBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(exitBut)
                 .addGap(35, 35, 35))
@@ -306,12 +310,13 @@ public class Settings extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox addDarkBox;
     private javax.swing.JButton avatarBut;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel canvas;
     private javax.swing.JToggleButton easyBut;
     private javax.swing.JButton exitBut;
     private javax.swing.JToggleButton hardBut;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
