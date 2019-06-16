@@ -21,6 +21,11 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -98,10 +103,29 @@ public class LabirinthPanel extends JPanel{
                   tools.setCoins( tools.coins-=5);
                  }
                  else if(tools.help2){
-                        blocks=rc.getArray();
+                        //blocks=rc.getArray();
                         tools.help2=false;
                         tools.setCoins(tools.coins-=15);
+                   Timer t = new Timer();
+                   TimerTask tt = new TimerTask() {
                        
+                   boolean firstTime = true;
+                            @Override
+                            public void run() {
+                              if(!firstTime){t.cancel();
+                               rc.clone[y][x]=true;
+                              blocks = rc.getClone();
+                              
+                              }
+                              else {
+                                  blocks=rc.getArray();
+                                  firstTime=false;
+                              }
+                             
+                            }
+                        };
+                   t.schedule(tt, 0, 10000);
+                      
                 }else{
                         
                          blocks=rc.revers(i,j);}

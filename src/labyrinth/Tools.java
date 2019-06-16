@@ -19,7 +19,7 @@ public class Tools {
     boolean onTime;
     Labyrinth main;
     boolean help1;
-    boolean darkness=true;
+    boolean darkness;
     boolean help2=true;
     HashMap<String,Integer> players; 
     String player="player";

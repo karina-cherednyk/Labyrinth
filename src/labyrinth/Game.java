@@ -231,6 +231,11 @@ int timePassed=0;
         jButton7.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("SHOW CORRECT LABYRINTH");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -385,7 +390,14 @@ int timePassed=0;
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     tipsMenu.show();
+    jButton4.setEnabled(true);
+    jButton7.setEnabled(true);
+        if(tools.coins<15){
+        jButton7.setEnabled(false);
+        if(tools.coins<5)
+            jButton4.setEnabled(false);
+    }
+        tipsMenu.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tipsExitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipsExitButActionPerformed
@@ -401,11 +413,14 @@ int timePassed=0;
     }//GEN-LAST:event_settingsButActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       if(tools.coins>=5){
-        tools.help1=true;}else{
-           System.out.print("Карина, сделай тут сообщение об ошибке, плиз");
-       }
+      tools.help1=true;
+       tipsMenu.hide();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        tools.help2=true;
+         tipsMenu.hide();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
 //    /**
 //     * @param args the command line arguments
