@@ -67,6 +67,7 @@ public class Labyrinth extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        setResizable(false);
 
         mainCanvas.setBackground(new java.awt.Color(51, 51, 51));
 

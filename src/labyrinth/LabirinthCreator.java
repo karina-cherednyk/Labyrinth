@@ -120,7 +120,10 @@ public class LabirinthCreator{
              sizeY=123;
         }
     }
-    public    boolean [][] revers(int i,int j){
+    public    boolean [][] revers(int i,int j,boolean first){
+        if(first){
+            revers(i,j,false);
+        }
         try{
            boolean temp;
            boolean temp2;
@@ -163,7 +166,7 @@ public class LabirinthCreator{
                    continue;
                a=rg.nextInt(3);
                while(a>0){
-                revers( p,k);
+                 revers( p,k,true);
                a--;}}
        }
     }
