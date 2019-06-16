@@ -14,14 +14,26 @@ import java.util.TimerTask;
  */
 public class Game extends javax.swing.JFrame {
 Tools tools;
+ Timer timerUp = new Timer();
+    Timer timerDown = new Timer();
+int timePassed=0;
+  TimerTask tt = new TimerTask() {
+               @Override
+               public void run() {
+                timePassed+=1;   
+               timeLab.setText("TIME PASSED: "+((timePassed/60)>9?"":"0")+(timePassed/60)+":"+((timePassed%60)>9?"":"0")+(timePassed%60));
+               }
+           };
 
     /**
      * Creates new form Game
      */
     public Game(Tools t) {
         tools=t;
-        
+       
         initComponents();
+         
+         timerUp.schedule(tt, 0, 1000);
       
         tipsMenu.hide();
         //1 second
@@ -29,7 +41,7 @@ Tools tools;
         jPanel2.requestFocus();
     }
  public void newGame(){
-       tools.timePassed=0; 
+       timePassed=0; 
         ((LabirinthPanel) jPanel2).regenerate();
  }
     /**
@@ -270,7 +282,7 @@ Tools tools;
             tipsMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tipsMenuLayout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 44, Short.MAX_VALUE))
+                .addGap(0, 52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -287,7 +299,7 @@ Tools tools;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(tipsMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

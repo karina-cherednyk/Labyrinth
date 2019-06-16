@@ -23,19 +23,10 @@ public class Tools {
     boolean help2;
     HashMap<String,Integer> players; 
     String player="player";
-    Timer timerUp = new Timer();
-int timePassed=0;
-  TimerTask tt = new TimerTask() {
-               @Override
-               public void run() {
-                timePassed+=1;   
-                main.g.timeLab.setText("TIME PASSED: "+((timePassed/60)>9?"":"0")+(timePassed/60)+":"+((timePassed%60)>9?"":"0")+(timePassed%60));
-               }
-           };
+   
     public Tools(Labyrinth l) {
         players=new HashMap<>();
         main=l;
-         timerUp.schedule(tt, 0, 1000);
     }
     public void setPlayer(String s){
         

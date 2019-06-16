@@ -101,8 +101,9 @@ public class LabirinthPanel extends JPanel{
                         tools.help2=false;
                         tools.setCoins(tools.coins-=15);
                        
-                }else
-                         blocks=rc.revers(i,j);
+                }else{
+                        
+                         blocks=rc.revers(i,j,true);}
                 repaint();
             }
            
@@ -121,6 +122,7 @@ public class LabirinthPanel extends JPanel{
         if(x==finish.x&&y==finish.y){
             JOptionPane.showConfirmDialog(null, "Win", "win", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
             //тут + остановка таймера и добавление в рекорды+открытие вы выиграли и там 2 кнопки новая игра и главное меню
+         
             if(tools.level==1)
              tools.setCoins(tools.coins+=5);
             else if(tools.level==2)
