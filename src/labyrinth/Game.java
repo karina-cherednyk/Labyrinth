@@ -192,6 +192,7 @@ int timePassed=0;
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1000, 510));
 
         tipsMenu.setIconifiable(true);
         tipsMenu.setVisible(true);
@@ -221,6 +222,11 @@ int timePassed=0;
         jButton4.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("SHOW ONE CORRECT BLOCK");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -331,7 +337,7 @@ int timePassed=0;
                 .addComponent(tipsMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,6 +399,13 @@ int timePassed=0;
     private void settingsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButActionPerformed
      settings.show();
     }//GEN-LAST:event_settingsButActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       if(tools.coins>=5){
+        tools.help1=true;}else{
+           System.out.print("Карина, сделай тут сообщение об ошибке, плиз");
+       }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 //    /**
 //     * @param args the command line arguments
