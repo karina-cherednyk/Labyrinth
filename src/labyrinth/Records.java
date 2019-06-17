@@ -30,7 +30,7 @@ public class Records extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabs = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         easyTable = new javax.swing.JTable();
@@ -63,37 +63,14 @@ public class Records extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
 
-        jTabbedPane1.setBackground(new java.awt.Color(51, 51, 51));
-        jTabbedPane1.setForeground(new java.awt.Color(51, 51, 51));
-        jTabbedPane1.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        tabs.setBackground(new java.awt.Color(51, 51, 51));
+        tabs.setForeground(new java.awt.Color(51, 51, 51));
+        tabs.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         easyTable.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
-        easyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "PLAYER", "TIME"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         jScrollPane1.setViewportView(easyTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -107,7 +84,7 @@ public class Records extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("  EASY  ", jPanel2);
+        tabs.addTab("  EASY  ", jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -147,7 +124,7 @@ public class Records extends javax.swing.JFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("  MEDIUM  ", jPanel3);
+        tabs.addTab("  MEDIUM  ", jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -187,7 +164,7 @@ public class Records extends javax.swing.JFrame {
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("  HARD  ", jPanel4);
+        tabs.addTab("  HARD  ", jPanel4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -195,14 +172,14 @@ public class Records extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tabs)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tabs)
                 .addContainerGap())
         );
 
@@ -227,8 +204,8 @@ public class Records extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable easyTable;
-    public javax.swing.JTable hardTable;
+    javax.swing.JTable easyTable;
+    javax.swing.JTable hardTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -238,7 +215,7 @@ public class Records extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable mediumTable;
+    javax.swing.JTable mediumTable;
+    javax.swing.JTabbedPane tabs;
     // End of variables declaration//GEN-END:variables
 }

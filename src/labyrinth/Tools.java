@@ -6,6 +6,7 @@
 package labyrinth;
 
 import java.util.HashMap;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -48,15 +49,16 @@ public class Tools {
     }
     public void addWinner(){
           String time = main.g.timeLab.getText().substring(13);
+                  Object[] gamer = {player,time};
         switch(level){
             case 1:{
-             
+           ((DefaultTableModel) main.r.easyTable.getModel()).addRow(gamer);
                 break;}
             case 2:{
-                
+            ((DefaultTableModel) main.r.mediumTable.getModel()).addRow(gamer);    
                 break;}
             default:{
-           //  main.r.hardTable.add(player,time);
+          ((DefaultTableModel) main.r.hardTable.getModel()).addRow(gamer);
                      }}
     }
     //return s

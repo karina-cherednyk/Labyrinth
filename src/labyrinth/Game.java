@@ -7,6 +7,7 @@ package labyrinth;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import static java.lang.Thread.sleep;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JInternalFrame;
@@ -23,8 +24,7 @@ Tools tools;
 int timePassed=0;
 int timeLeft;
 TimerTask tLeft;
-public JInternalFrame wFrame;
-public JLabel wLab;
+
   TimerTask tt = new TimerTask() {
                @Override
                public void run() {
@@ -50,8 +50,6 @@ public JLabel wLab;
 };
 
        initComponents();
-       wFrame = winFrame;
-       wLab = winLab;
        timerUp.schedule(tt, 0, 1000);
        if(tools.onTime) timerDown.schedule(tLeft, 0, 1000);
        else remove(tLeftLab);
@@ -59,8 +57,7 @@ public JLabel wLab;
       jPanel2.requestFocus();
       ((LabirinthPanel) jPanel2).width =Toolkit.getDefaultToolkit().getScreenSize().width;
       ((LabirinthPanel) jPanel2).regenerate();
-      System.out.println("CANVAS WIDTH "+jPanel2.getWidth());
-      System.out.println("MAIN WIDTH "+getWidth());
+        
     }
  public void newGame(){
        timePassed=0; 
@@ -88,7 +85,6 @@ public JLabel wLab;
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new LabirinthPanel(tools);
         tipsMenu = new javax.swing.JInternalFrame();
         jPanel3 = new javax.swing.JPanel();
@@ -197,7 +193,7 @@ public JLabel wLab;
                 .addComponent(timeLab, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
@@ -496,25 +492,27 @@ public JLabel wLab;
         noTimeFrame.hide();
         winFrame.hide();
 
-        jScrollPane1.setViewportView(jPanel2);
-        jPanel2.getAccessibleContext().setAccessibleParent(null);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(739, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -540,38 +538,52 @@ public JLabel wLab;
         tipsMenu.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tipsExitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipsExitButActionPerformed
-     tipsMenu.hide();
-    }//GEN-LAST:event_tipsExitButActionPerformed
-
-    private void setExitBut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setExitBut1ActionPerformed
-     settings.hide();
-    }//GEN-LAST:event_setExitBut1ActionPerformed
-
     private void settingsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButActionPerformed
      settings.show();
     }//GEN-LAST:event_settingsButActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      tools.help1=true;
-       tipsMenu.hide();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        tools.help2=true;
-         tipsMenu.hide();
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void noTimeConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTimeConfirmActionPerformed
-         tools.main.setVisible(true);
-         dispose();
-    }//GEN-LAST:event_noTimeConfirmActionPerformed
-
     private void winConfButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winConfButActionPerformed
-         tools.main.setVisible(true);
+        tools.main.setVisible(true);
         dispose();
     }//GEN-LAST:event_winConfButActionPerformed
 
+    private void noTimeConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTimeConfirmActionPerformed
+        tools.main.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_noTimeConfirmActionPerformed
+
+    private void setExitBut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setExitBut1ActionPerformed
+        settings.hide();
+    }//GEN-LAST:event_setExitBut1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        tools.help2=true;
+        tipsMenu.hide();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        tools.help1=true;
+        tipsMenu.hide();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void tipsExitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipsExitButActionPerformed
+        tipsMenu.hide();
+    }//GEN-LAST:event_tipsExitButActionPerformed
+    public void finishGame() throws InterruptedException{
+        timerUp.cancel();
+             tools.addWinner();
+            if(tools.onTime)timerDown.cancel();
+            winFrame.show();
+            winLab.setText("You`ve won "+tools.coins+" coins");
+            if(tools.level==1)
+             tools.setCoins(tools.coins+=5);
+            else if(tools.level==2)
+             tools.setCoins(tools.coins+=7);
+            else 
+              tools.setCoins(tools.coins+=10);
+            sleep(5000);
+            setVisible(false);
+    }
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -622,21 +634,16 @@ public JLabel wLab;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel musicLab;
     private javax.swing.JButton noTimeConfirm;
-    private javax.swing.JButton noTimeConfirm1;
     private javax.swing.JInternalFrame noTimeFrame;
-    private javax.swing.JInternalFrame noTimeFrame1;
     private javax.swing.JButton setExitBut1;
     private javax.swing.JInternalFrame settings;
     private javax.swing.JButton settingsBut;

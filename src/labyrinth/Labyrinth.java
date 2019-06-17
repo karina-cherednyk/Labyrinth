@@ -7,8 +7,21 @@ package labyrinth;
 
 import java.awt.Desktop;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import labyrinth.LabirinthPanel;
 
 /**
@@ -21,6 +34,7 @@ public class Labyrinth extends javax.swing.JFrame {
    Game g ;
    Settings s;
    Records r;
+   File recFile;
     boolean game;
     File fileToOpen ;
     public Labyrinth() {
@@ -29,8 +43,40 @@ public class Labyrinth extends javax.swing.JFrame {
         s=new Settings(t);
         r=new Records();
         initComponents();
-       
-       
+       recFile = new File("results.txt");
+        try {
+           BufferedReader oos = new BufferedReader(new FileReader(recFile));
+           ArrayList<Player> p = new ArrayList<>();
+           String s = oos.readLine();
+           while(s!=null){
+               p.add(Player.recognise(s));
+               s = oos.readLine();
+           }
+           DefaultTableModel e = (DefaultTableModel)r.easyTable.getModel();
+           DefaultTableModel m = (DefaultTableModel)r.mediumTable.getModel();
+           DefaultTableModel h = (DefaultTableModel)r.hardTable.getModel();
+          for(Player pl : p){
+              Object[] obj = {pl.name,pl.result};
+               switch (pl.level) {
+                   
+                   case 1:
+                       e.addRow(obj);
+                       break;
+                   case 2:
+                       m.addRow(obj);
+                       break;
+                   case 3:
+                       h.addRow(obj);
+                       break;
+                   default:
+                       break;
+               }
+          }
+          
+           oos.close();
+       } catch (IOException ex) {
+           Logger.getLogger(Labyrinth.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     /**
@@ -245,6 +291,21 @@ public class Labyrinth extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButActionPerformed
+       try {
+           FileWriter oos = new FileWriter(recFile);
+           ArrayList<Player> p = new ArrayList<>();
+           DefaultTableModel e = (DefaultTableModel)r.easyTable.getModel();
+           DefaultTableModel m = (DefaultTableModel)r.mediumTable.getModel();
+           DefaultTableModel h = (DefaultTableModel)r.hardTable.getModel();
+           for(int i=0; i<e.getRowCount(); i++) p.add(new Player(e.getValueAt(i, 0),e.getValueAt(i, 1),1 ));
+           for(int i=0; i<m.getRowCount(); i++) p.add(new Player(e.getValueAt(i, 0),e.getValueAt(i, 1),2 ));
+           for(int i=0; i<h.getRowCount(); i++) p.add(new Player(e.getValueAt(i, 0),e.getValueAt(i, 1),3 ));
+           for(Player pl : p) oos.write(pl.toString()+"\n");
+           oos.close();
+       } catch (IOException ex) {
+           Logger.getLogger(Labyrinth.class.getName()).log(Level.SEVERE, null, ex);
+       }
+                
         dispose();
     }//GEN-LAST:event_exitButActionPerformed
 

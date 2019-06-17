@@ -59,6 +59,15 @@ public class LabirinthPanel extends JPanel{
     private int xHovered=-1;
     private int yHovered=-1;
     
+          private int findStart(int s){
+                 if(s%3==1)
+                    return s-1;
+                 else if(s%3==2)
+                     return s-2;
+                 else
+                     return s;
+             }
+    
     LabirinthPanel(Tools t){
         tools=t;
       rg=new Random();
@@ -145,31 +154,18 @@ public class LabirinthPanel extends JPanel{
         else return;
        repaint();
         if(x==finish.x&&y==finish.y){
-             tools.main.g.timerUp.cancel();
-             tools.addWinner();
-            if(tools.onTime)tools.main.g.timerDown.cancel();
-            tools.main.g.wFrame.show();
-            tools.main.g.wLab.setText("You`ve won "+tools.coins+" coins");
-            if(tools.level==1)
-             tools.setCoins(tools.coins+=5);
-            else if(tools.level==2)
-             tools.setCoins(tools.coins+=7);
-            else 
-              tools.setCoins(tools.coins+=10); 
+            try {
+                tools.main.g.finishGame();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(LabirinthPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
         });
     
         
     }
-      private int findStart(int s){
-                 if(s%3==1)
-                    return s-1;
-                 else if(s%3==2)
-                     return s-2;
-                 else
-                     return s;
-             }
+
      private BufferedImage setScaledInstance(String path) throws IOException{
       BufferedImage temp = ImageIO.read(getClass().getResource(path));
       Image toolkitImage = temp.getScaledInstance(size, size, Image.SCALE_SMOOTH);
@@ -189,12 +185,16 @@ public class LabirinthPanel extends JPanel{
       //  g2.drawImage(canNotGo, 0,0,getWidth(),getHeight(),null);
                 for(int i=0; i<blocks.length; i++){  
             for(int j=0; j<blocks[i].length;j++){
-            if((i-yHovered)>=0 && (i-yHovered)<3 && j==xHovered)g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.75f));
-            else if( j==xHovered+3)g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+            if( (i-yHovered)>=0 && (i-yHovered)<3 ){
+                if(j==xHovered) g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.75f));
+                else if( j==xHovered+3) g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+            }
+            
             if(blocks[i][j]==false)g2.drawImage(canNotGo, j*size, i*size, null);
             else if(blocks[i][j]==true) g2.drawImage(canGo, j*size, i*size, null);
             if(i+1==blocks.length&& j%3==0)g2.drawLine(j*size,0,j*size,getHeight());
            }
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
              if(i%3==0)g2.drawLine(0,i*size,getWidth(),i*size);
         }
                 if(tools.darkness){
@@ -217,9 +217,11 @@ public class LabirinthPanel extends JPanel{
     return !(Math.abs(x0-j)<5 && Math.abs(y0-i)<5);
     }
 public int width;
+public int height;
   private void setSize(){
              size = width/rc.sizeY;
              setPreferredSize(new Dimension(rc.sizeY*size, rc.sizeX*size));    
+             height = rc.sizeX*size;
     }
     public void regenerate() {
         x=1;y=1;
