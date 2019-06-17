@@ -59,7 +59,17 @@ public class Tools {
            //  main.r.hardTable.add(player,time);
                      }}
     }
-    
-    
+    //return s
+    private int MINUTE = 60;
+    private int halfMIN = MINUTE/2;
+ 
+    int getTimeLeft() {
+        switch(level){
+        case 1: return 3*MINUTE;
+        case 2: return 3*MINUTE+halfMIN;
+        case 3: return 4*MINUTE;
+    }
+    return -1;
+    }
     
 }

@@ -275,9 +275,9 @@ public class Labyrinth extends javax.swing.JFrame {
     }//GEN-LAST:event_coinsButActionPerformed
 
     private void startButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButActionPerformed
+        g.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         g.newGame();
         g.setVisible(true);
-        g.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         setVisible(false);
         
     }//GEN-LAST:event_startButActionPerformed

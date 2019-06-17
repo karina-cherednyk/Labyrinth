@@ -13,6 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -62,7 +63,6 @@ public class LabirinthPanel extends JPanel{
         tools=t;
       rg=new Random();
         rc = new LabirinthCreator();
-        regenerate();
         requestFocus();
         addMouseListener(new MouseAdapter() {
             @Override
@@ -147,9 +147,9 @@ public class LabirinthPanel extends JPanel{
         if(x==finish.x&&y==finish.y){
              tools.main.g.timerUp.cancel();
              tools.addWinner();
-            JOptionPane.showConfirmDialog(null, "Win", "win", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
-            //тут + остановка таймера и добавление в рекорды+открытие вы выиграли и там 2 кнопки новая игра и главное меню
-        
+            if(tools.onTime)tools.main.g.timerDown.cancel();
+            tools.main.g.wFrame.show();
+            tools.main.g.wLab.setText("You`ve won "+tools.coins+" coins");
             if(tools.level==1)
              tools.setCoins(tools.coins+=5);
             else if(tools.level==2)
@@ -216,9 +216,9 @@ public class LabirinthPanel extends JPanel{
     int y0 = (int)y/3 * 3 + 1;
     return !(Math.abs(x0-j)<5 && Math.abs(y0-i)<5);
     }
-
+public int width;
   private void setSize(){
-             size = 800/rc.sizeX;
+             size = width/rc.sizeY;
              setPreferredSize(new Dimension(rc.sizeY*size, rc.sizeX*size));    
     }
     public void regenerate() {
