@@ -7,11 +7,13 @@ package labyrinth;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import static java.lang.Thread.sleep;
-import java.util.Timer;
-import java.util.TimerTask;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
  *
@@ -19,22 +21,23 @@ import javax.swing.JLabel;
  */
 public class Game extends javax.swing.JFrame {
 Tools tools;
- Timer timerUp = new Timer();
-    Timer timerDown = new Timer();
-int timePassed=0;
-int timeLeft;
-TimerTask tLeft;
+Timer timerUp;
+Timer timerDown;
+ActionListener tLeft;
+
  public TipsMenu tipsMenu;
     public Win winFrame;
     public NoTime noTimeFrame;
     public MusicSet ms;
+    int timeLeft,timePassed;
 
-  TimerTask tt = new TimerTask() {
-               @Override
-               public void run() {
-                timePassed+=1;   
+   ActionListener tPassed = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+               timePassed+=1;   
                timeLab.setText("TIME PASSED: "+((timePassed/60)>9?"":"0")+(timePassed/60)+":"+((timePassed%60)>9?"":"0")+(timePassed%60));
-               }
+    }
+
            };
 
     /**
@@ -42,38 +45,42 @@ TimerTask tLeft;
      */
     public Game(Tools t) {
         tools=t;
+        initComponents();
          tipsMenu= new TipsMenu(tools);
          winFrame = new Win(tools);
-        timeLeft = tools.getTimeLeft();
        ms = new MusicSet(tools);
         noTimeFrame = new NoTime(tools);
         noTimeFrame.setVisible(false);
-       tLeft = new TimerTask(){
-      @Override
-      public void run() {
-          timeLeft-=1;
-          tLeftLab.setText("TIME LEFT: "+((timeLeft/60)>9?"":"0")+(timeLeft/60)+":"+((timeLeft%60)>9?"":"0")+(timeLeft%60));
-          if(timeLeft==0) noTimeFrame.setVisible(true);
-      }
+       tLeft = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               timeLeft-=1;
+              tLeftLab.setText("TIME LEFT: "+((timeLeft/60)>9?"":"0")+(timeLeft/60)+":"+((timeLeft%60)>9?"":"0")+(timeLeft%60));
+             if(timeLeft==0) noTimeFrame.setVisible(true);
+            }  
+            };
+      timerUp = new Timer(1000,tPassed);
+      timerDown = new Timer(1000,tLeft);
+      timerUp.setInitialDelay(0);
+      timerDown.setInitialDelay(0);
       
-};
-
-       initComponents();
       tipsMenu.setVisible(false);
       jPanel2.requestFocus();
       ((LabirinthPanel) jPanel2).height =Toolkit.getDefaultToolkit().getScreenSize().height-jPanel1.getHeight()-30;
-      ((LabirinthPanel) jPanel2).regenerate();
         
     }
  public void newGame(){
      setEnabled(true);
        timePassed=0; 
         ((LabirinthPanel) jPanel2).regenerate();
-        timerUp = new Timer();
-        timerDown = new Timer();
-       timerUp.schedule(tt, 0, 1000);
-       if(tools.onTime) timerDown.schedule(tLeft, 0, 1000);
-       else remove(tLeftLab);
+        timePassed=0;
+        timeLeft = tools.getTimeLeft();
+       timerUp.start();
+       if(tools.onTime) {
+           timerDown.start();
+           tLeftLab.setVisible(true);
+       }
+       else tLeftLab.setVisible(false);
  }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -206,16 +213,15 @@ TimerTask tLeft;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(settingsBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(timeLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(coinsLab))
-                    .addComponent(tLeftLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tLeftLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(timeLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(coinsLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -267,9 +273,9 @@ TimerTask tLeft;
      ms.setVisible(true);
     }//GEN-LAST:event_settingsButActionPerformed
     public void finishGame() throws InterruptedException{
-        timerUp.cancel();
+        timerUp.stop();
         tools.addWinner();
-            if(tools.onTime)timerDown.cancel();
+            if(tools.onTime)timerDown.stop();
            int coins;
             if(tools.level==1)
             {
@@ -293,40 +299,7 @@ TimerTask tLeft;
                  
            
     }
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Game().setVisible(true);
-//            }
-//        });
-//    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

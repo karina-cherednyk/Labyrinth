@@ -103,17 +103,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton2" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jButton2" alignment="1" pref="48" max="32767" attributes="0"/>
                       <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
                       <Component id="settingsBut" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButton6" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="timeLab" alignment="3" max="32767" attributes="0"/>
-                          <Component id="coinsLab" alignment="3" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="tLeftLab" alignment="0" max="32767" attributes="0"/>
+                      <Component id="timeLab" alignment="0" max="32767" attributes="0"/>
+                      <Component id="coinsLab" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
