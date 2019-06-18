@@ -69,6 +69,7 @@ TimerTask tLeft;
         
     }
  public void newGame(){
+     setEnabled(true);
        timePassed=0; 
         ((LabirinthPanel) jPanel2).regenerate();
  }

@@ -251,7 +251,6 @@ public class Settings extends javax.swing.JFrame {
     private void timeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeBoxActionPerformed
        if(timeBox.isSelected()){
         tools.onTime=true;
-           System.out.println("labyrinth.Settings.timeBoxActionPerformed()");
     }else{
          tools.onTime=false;  
        }
