@@ -9,7 +9,11 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import static java.lang.Thread.sleep;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -24,6 +28,7 @@ Tools tools;
 Timer timerUp;
 Timer timerDown;
 ActionListener tLeft;
+ public Clip clip;
 
  public TipsMenu tipsMenu;
     public Win winFrame;
@@ -71,6 +76,7 @@ ActionListener tLeft;
         
     }
  public void newGame(){
+     playSound();
      setEnabled(true);
        timePassed=0; 
         ((LabirinthPanel) jPanel2).regenerate();
@@ -286,7 +292,19 @@ ActionListener tLeft;
                  
            
     }
-
+    
+public void playSound() {
+    try {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("mus.wav").getAbsoluteFile());
+         clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+       clip.loop(clip.LOOP_CONTINUOUSLY);
+    } catch(Exception ex) {
+        System.out.println("Error with playing sound.");
+        ex.printStackTrace();
+    }
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
