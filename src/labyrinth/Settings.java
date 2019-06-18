@@ -141,6 +141,11 @@ public class Settings extends javax.swing.JFrame {
         addDarkBox.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
         addDarkBox.setForeground(new java.awt.Color(255, 255, 255));
         addDarkBox.setText("ADD DARKNESS");
+        addDarkBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDarkBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -152,7 +157,7 @@ public class Settings extends javax.swing.JFrame {
                     .addComponent(exitBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(timeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(timeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(hardBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(easyBut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,7 +166,7 @@ public class Settings extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nameField)
                             .addComponent(avatarBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addDarkBox, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))))
+                            .addComponent(addDarkBox, javax.swing.GroupLayout.PREFERRED_SIZE, 212, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -244,7 +249,12 @@ public class Settings extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButActionPerformed
 
     private void timeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeBoxActionPerformed
-        // TODO add your handling code here:
+       if(timeBox.isSelected()){
+        tools.onTime=true;
+           System.out.println("labyrinth.Settings.timeBoxActionPerformed()");
+    }else{
+         tools.onTime=false;  
+       }
     }//GEN-LAST:event_timeBoxActionPerformed
 
     private void avatarButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarButActionPerformed
@@ -273,6 +283,15 @@ public class Settings extends javax.swing.JFrame {
    easyBut.setSelected(false);
    mediumBut.setSelected(false);
     }//GEN-LAST:event_hardButActionPerformed
+
+    private void addDarkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDarkBoxActionPerformed
+        if(addDarkBox.isSelected()){
+            tools.darkness=true;
+        }else{
+            tools.darkness=false;
+                   
+        }
+    }//GEN-LAST:event_addDarkBoxActionPerformed
 
 //    /**
 //     * @param args the command line arguments
