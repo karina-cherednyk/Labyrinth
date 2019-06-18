@@ -87,6 +87,7 @@ public class Win extends javax.swing.JFrame {
      tools.main.setVisible(true);
      setVisible(false);
      tools.main.g.setVisible(false);
+   
     }//GEN-LAST:event_winConfButActionPerformed
 
     /**

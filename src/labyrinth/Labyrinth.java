@@ -309,8 +309,11 @@ public class Labyrinth extends javax.swing.JFrame {
        } catch (IOException ex) {
            Logger.getLogger(Labyrinth.class.getName()).log(Level.SEVERE, null, ex);
        }
-                
-        dispose();
+       g.exit();
+        g.dispose();
+        s.dispose();
+        r.dispose();
+       System.exit(0);
     }//GEN-LAST:event_exitButActionPerformed
 
     private void helpButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButActionPerformed

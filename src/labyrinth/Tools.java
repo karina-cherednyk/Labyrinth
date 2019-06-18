@@ -64,7 +64,7 @@ public class Tools {
                      }}
     }
     //return s
-    private int MINUTE = 60;
+    private int MINUTE = 1;
     private int halfMIN = MINUTE/2;
  
     int getTimeLeft() {

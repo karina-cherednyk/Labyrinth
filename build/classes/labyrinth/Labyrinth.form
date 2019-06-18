@@ -44,7 +44,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="0" pref="720" max="32767" attributes="0"/>
+          <Component id="jPanel2" alignment="0" pref="724" max="32767" attributes="0"/>
           <Component id="mainCanvas" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
