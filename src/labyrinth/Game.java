@@ -53,15 +53,12 @@ TimerTask tLeft;
       public void run() {
           timeLeft-=1;
           tLeftLab.setText("TIME LEFT: "+((timeLeft/60)>9?"":"0")+(timeLeft/60)+":"+((timeLeft%60)>9?"":"0")+(timeLeft%60));
-          if(timeLeft==0) noTimeFrame.show();
+          if(timeLeft==0) noTimeFrame.setVisible(true);
       }
       
 };
 
        initComponents();
-       timerUp.schedule(tt, 0, 1000);
-       if(tools.onTime) timerDown.schedule(tLeft, 0, 1000);
-       else remove(tLeftLab);
       tipsMenu.setVisible(false);
       jPanel2.requestFocus();
       ((LabirinthPanel) jPanel2).height =Toolkit.getDefaultToolkit().getScreenSize().height-jPanel1.getHeight()-30;
@@ -72,6 +69,11 @@ TimerTask tLeft;
      setEnabled(true);
        timePassed=0; 
         ((LabirinthPanel) jPanel2).regenerate();
+        timerUp = new Timer();
+        timerDown = new Timer();
+       timerUp.schedule(tt, 0, 1000);
+       if(tools.onTime) timerDown.schedule(tLeft, 0, 1000);
+       else remove(tLeftLab);
  }
     /**
      * This method is called from within the constructor to initialize the form.
