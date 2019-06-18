@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author User
  */
 public class Tools {
-    int coins=20;
+    int coins;
     int level=1;
     String playerRout="/icons/woman.png";
     boolean onTime;

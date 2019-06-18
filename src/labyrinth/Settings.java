@@ -253,6 +253,7 @@ public class Settings extends javax.swing.JFrame {
         tools.onTime=true;
     }else{
          tools.onTime=false;  
+           System.out.println("labyrinth.Settings.timeBoxActionPerformed()");
        }
     }//GEN-LAST:event_timeBoxActionPerformed
 

@@ -56,7 +56,8 @@ ActionListener tLeft;
             public void actionPerformed(ActionEvent e) {
                timeLeft-=1;
               tLeftLab.setText("TIME LEFT: "+((timeLeft/60)>9?"":"0")+(timeLeft/60)+":"+((timeLeft%60)>9?"":"0")+(timeLeft%60));
-             if(timeLeft==0) noTimeFrame.setVisible(true);
+             if(timeLeft==0){ noTimeFrame.setVisible(true);
+                 setEnabled(false);}
             }  
             };
       timerUp = new Timer(1000,tPassed);

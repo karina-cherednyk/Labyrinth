@@ -226,7 +226,7 @@ public class LabirinthPanel extends JPanel{
             if(coinLocation[i]==null)continue;
             else if(x==coinLocation[i][0]&&y==coinLocation[i][1]) {
                 coinLocation[i]=null;
-                tools.coins++;
+                tools.setCoins(tools.coins+=1);
                 tools.main.g.coinsLab.setText("COINS: "+tools.coins);
             }
             else g2.drawImage(coin, coinLocation[i][0]*size, coinLocation[i][1]*size, null);

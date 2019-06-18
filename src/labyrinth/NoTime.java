@@ -84,6 +84,7 @@ public class NoTime extends javax.swing.JFrame {
 
     private void noTimeConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTimeConfirmActionPerformed
         tools.main.setVisible(true);
+        //tools.main.jLabel3.setText("COINS "+tools.coins);
          setVisible(false);
     }//GEN-LAST:event_noTimeConfirmActionPerformed
 
