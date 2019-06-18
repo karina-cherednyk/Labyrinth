@@ -15,6 +15,7 @@ public class NoTime extends javax.swing.JFrame {
      * Creates new form NoTime
      */
     Tools tools;
+
     public NoTime(Tools t) {
         tools = t;
         initComponents();
@@ -85,13 +86,12 @@ public class NoTime extends javax.swing.JFrame {
     private void noTimeConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTimeConfirmActionPerformed
         tools.main.setVisible(true);
         //tools.main.jLabel3.setText("COINS "+tools.coins);
-         setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_noTimeConfirmActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;

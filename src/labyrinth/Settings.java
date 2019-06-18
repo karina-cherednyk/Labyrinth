@@ -4,14 +4,18 @@
  * and open the template in the editor.
  */
 package labyrinth;
+
 import java.awt.Image;
 import javax.swing.*;
+
 /**
  *
  * @author k256
  */
 public class Settings extends javax.swing.JFrame {
+
     Tools tools;
+
     /**
      * Creates new form Settings
      */
@@ -243,54 +247,54 @@ public class Settings extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButActionPerformed
-        tools.main.jLabel2.setText("PLAYER: "+nameField.getText());
+        tools.main.jLabel2.setText("PLAYER: " + nameField.getText());
         tools.setPlayer(nameField.getText());
         dispose();
         tools.main.setVisible(true);
-        
+
     }//GEN-LAST:event_exitButActionPerformed
 
     private void timeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeBoxActionPerformed
-       if(timeBox.isSelected()){
-        tools.onTime=true;
-    }else{
-         tools.onTime=false;  
-       }
+        if (timeBox.isSelected()) {
+            tools.onTime = true;
+        } else {
+            tools.onTime = false;
+        }
     }//GEN-LAST:event_timeBoxActionPerformed
 
     private void avatarButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarButActionPerformed
         int w = avatarBut.getWidth();
         int h = avatarBut.getHeight();
-        avatarIndex = (avatarIndex+1) % ii.length;
+        avatarIndex = (avatarIndex + 1) % ii.length;
         avatarBut.setIcon(new ImageIcon(ii[avatarIndex]));
-        tools.playerRout=rout[avatarIndex];
+        tools.playerRout = rout[avatarIndex];
 
     }//GEN-LAST:event_avatarButActionPerformed
 
     private void easyButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButActionPerformed
-   tools.level = 1;
-   mediumBut.setSelected(false);
-   hardBut.setSelected(false);
+        tools.level = 1;
+        mediumBut.setSelected(false);
+        hardBut.setSelected(false);
     }//GEN-LAST:event_easyButActionPerformed
 
     private void mediumButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButActionPerformed
-   tools.level = 2;
-   easyBut.setSelected(false);
-   hardBut.setSelected(false);
+        tools.level = 2;
+        easyBut.setSelected(false);
+        hardBut.setSelected(false);
     }//GEN-LAST:event_mediumButActionPerformed
 
     private void hardButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButActionPerformed
-   tools.level = 3;
-   easyBut.setSelected(false);
-   mediumBut.setSelected(false);
+        tools.level = 3;
+        easyBut.setSelected(false);
+        mediumBut.setSelected(false);
     }//GEN-LAST:event_hardButActionPerformed
 
     private void addDarkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDarkBoxActionPerformed
-        if(addDarkBox.isSelected()){
-            tools.darkness=true;
-        }else{
-            tools.darkness=false;
-                   
+        if (addDarkBox.isSelected()) {
+            tools.darkness = true;
+        } else {
+            tools.darkness = false;
+
         }
     }//GEN-LAST:event_addDarkBoxActionPerformed
 
@@ -346,6 +350,6 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JCheckBox timeBox;
     // End of variables declaration//GEN-END:variables
 int avatarIndex = 4;
-Image[] ii = new Image[8];
-String [] rout= new String[]{"/icons/alien.png","/icons/avatar.png","/icons/boy.png","/icons/girl.png","/icons/woman.png","/icons/man.png","/icons/ninja.png","/icons/rabbit.png"};
+    Image[] ii = new Image[8];
+    String[] rout = new String[]{"/icons/alien.png", "/icons/avatar.png", "/icons/boy.png", "/icons/girl.png", "/icons/woman.png", "/icons/man.png", "/icons/ninja.png", "/icons/rabbit.png"};
 }

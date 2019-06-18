@@ -14,6 +14,7 @@ import static java.lang.Thread.sleep;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -24,71 +25,91 @@ import javax.swing.Timer;
  * @author k256
  */
 public class Game extends javax.swing.JFrame {
-Tools tools;
-Timer timerUp;
-Timer timerDown;
-ActionListener tLeft;
- public Clip clip;
 
- public TipsMenu tipsMenu;
+    Tools tools;
+    Timer timerUp;
+    Timer timerDown;
+    ActionListener tLeft;
+    public Clip clip = playSound("mus.wav");
+    public Clip coins = playSound("coins.wav");
+    public Clip win = playSound("win.au");
+    public Clip lose = playSound("lose.wav");
+    private FloatControl  volumeClip=(FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+    private FloatControl  volumeCoins=(FloatControl) coins.getControl(FloatControl.Type.MASTER_GAIN);
+    private FloatControl  volumeWin=(FloatControl) win.getControl(FloatControl.Type.MASTER_GAIN);
+    private FloatControl  volumeLose=(FloatControl) lose.getControl(FloatControl.Type.MASTER_GAIN);
+    
+
+    public TipsMenu tipsMenu;
     public Win winFrame;
     public NoTime noTimeFrame;
     public MusicSet ms;
-    int timeLeft,timePassed;
+    int timeLeft, timePassed;
 
-   ActionListener tPassed = new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-               timePassed+=1;   
-               timeLab.setText("TIME PASSED: "+((timePassed/60)>9?"":"0")+(timePassed/60)+":"+((timePassed%60)>9?"":"0")+(timePassed%60));
-    }
+    ActionListener tPassed = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            timePassed += 1;
+            timeLab.setText("TIME PASSED: " + ((timePassed / 60) > 9 ? "" : "0") + (timePassed / 60) + ":" + ((timePassed % 60) > 9 ? "" : "0") + (timePassed % 60));
+        }
 
-           };
+    };
 
     /**
      * Creates new form Game
      */
     public Game(Tools t) {
-        tools=t;
+        tools = t;
         initComponents();
-         tipsMenu= new TipsMenu(tools);
-         winFrame = new Win(tools);
-       ms = new MusicSet(tools);
+        tipsMenu = new TipsMenu(tools);
+        winFrame = new Win(tools);
+        ms = new MusicSet(tools);
         noTimeFrame = new NoTime(tools);
         noTimeFrame.setVisible(false);
-       tLeft = new ActionListener(){
+        tLeft = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               timeLeft-=1;
-              tLeftLab.setText("TIME LEFT: "+((timeLeft/60)>9?"":"0")+(timeLeft/60)+":"+((timeLeft%60)>9?"":"0")+(timeLeft%60));
-             if(timeLeft==0){ noTimeFrame.setVisible(true);
-                 setEnabled(false);}
-            }  
-            };
-      timerUp = new Timer(1000,tPassed);
-      timerDown = new Timer(1000,tLeft);
-      timerUp.setInitialDelay(0);
-      timerDown.setInitialDelay(0);
-      
-      tipsMenu.setVisible(false);
-      jPanel2.requestFocus();
-      ((LabirinthPanel) jPanel2).height =Toolkit.getDefaultToolkit().getScreenSize().height-jPanel1.getHeight()-30;
-        
+                timeLeft -= 1;
+                tLeftLab.setText("TIME LEFT: " + ((timeLeft / 60) > 9 ? "" : "0") + (timeLeft / 60) + ":" + ((timeLeft % 60) > 9 ? "" : "0") + (timeLeft % 60));
+                if (timeLeft == 0) {
+                    clip.stop();
+                    lose.setFramePosition(0);
+                    lose.start();
+                    noTimeFrame.setVisible(true);
+                    setEnabled(false);
+                }
+            }
+        };
+        timerUp = new Timer(1000, tPassed);
+        timerDown = new Timer(1000, tLeft);
+        timerUp.setInitialDelay(0);
+        timerDown.setInitialDelay(0);
+
+        tipsMenu.setVisible(false);
+        jPanel2.requestFocus();
+        ((LabirinthPanel) jPanel2).height = Toolkit.getDefaultToolkit().getScreenSize().height - jPanel1.getHeight() - 30;
+
     }
- public void newGame(){
-     playSound();
-     setEnabled(true);
-       timePassed=0; 
+
+    public void newGame() {
+        clip.setFramePosition(0);
+        clip.start();
+        clip.loop(clip.LOOP_CONTINUOUSLY);
+        setEnabled(true);
+        timePassed = 0;
         ((LabirinthPanel) jPanel2).regenerate();
-        timePassed=0;
+        timePassed = 0;
         timeLeft = tools.getTimeLeft();
-       timerUp.start();
-       if(tools.onTime) {
-           timerDown.start();
-           tLeftLab.setVisible(true);
-       }
-       else{ timerDown.stop();tLeftLab.setVisible(false);}
- }
+        timerUp.start();
+        if (tools.onTime) {
+            timerDown.start();
+            tLeftLab.setVisible(true);
+        } else {
+            timerDown.stop();
+            tLeftLab.setVisible(false);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -243,68 +264,80 @@ ActionListener tLeft;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       newGame();
+        newGame();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       tools.main.setVisible(true);
+        clip.stop();
+        tools.main.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   ( (TipsMenu) tipsMenu).oneBlockBut.setEnabled(true);
-     ( (TipsMenu) tipsMenu).correctLabBut.setEnabled(true);
-        if(tools.coins<15){
-        ( (TipsMenu) tipsMenu).correctLabBut.setEnabled(false);
-        if(tools.coins<5)
-            ( (TipsMenu) tipsMenu).oneBlockBut.setEnabled(false);
-    }
+        ((TipsMenu) tipsMenu).oneBlockBut.setEnabled(true);
+        ((TipsMenu) tipsMenu).correctLabBut.setEnabled(true);
+        if (tools.coins < 15) {
+            ((TipsMenu) tipsMenu).correctLabBut.setEnabled(false);
+            if (tools.coins < 5) {
+                ((TipsMenu) tipsMenu).oneBlockBut.setEnabled(false);
+            }
+        }
         tipsMenu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void settingsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButActionPerformed
-     ms.setVisible(true);
+        ms.setVisible(true);
     }//GEN-LAST:event_settingsButActionPerformed
-    public void finishGame() throws InterruptedException{
+    public void finishGame() throws InterruptedException {
         timerUp.stop();
+        clip.stop();
+        win.setFramePosition(0);
+        win.start();
         tools.addWinner();
-            if(tools.onTime)timerDown.stop();
-           int coins;
-            if(tools.level==1)
-            {
-                tools.setCoins(tools.coins+=5);
-                coins = 5;
-            }
-            else if(tools.level==2)
-            {
-                tools.setCoins(tools.coins+=7);
-                coins = 7;
-            }
-            else 
-            {
-                tools.setCoins(tools.coins+=10);
-                coins=10;
-            }
-             winFrame.setVisible(true);
-            ( (Win) winFrame ).winLab.setText("You`ve won "+coins+" coins");
-             coinsLab.setText("COINS: "+tools.coins);
-             this.setEnabled(false);
-                 
+        if (tools.onTime) {
+            timerDown.stop();
+        }
+        int coins;
+        if (tools.level == 1) {
+            tools.setCoins(tools.coins += 5);
+            coins = 5;
+        } else if (tools.level == 2) {
+            tools.setCoins(tools.coins += 7);
+            coins = 7;
+        } else {
+            tools.setCoins(tools.coins += 10);
+            coins = 10;
+        }
+        winFrame.setVisible(true);
+        ((Win) winFrame).winLab.setText("You`ve won " + coins + " coins");
+        coinsLab.setText("COINS: " + tools.coins);
+        this.setEnabled(false);
+
+    }
+
+    public Clip playSound(String path) {
+        Clip clip = null;
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(path).getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
            
+
+        } catch (Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+        return clip;
     }
-    
-public void playSound() {
-    try {
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("mus.wav").getAbsoluteFile());
-         clip = AudioSystem.getClip();
-        clip.open(audioInputStream);
-        clip.start();
-       clip.loop(clip.LOOP_CONTINUOUSLY);
-    } catch(Exception ex) {
-        System.out.println("Error with playing sound.");
-        ex.printStackTrace();
+    public void setVolume(int v){
+        if(v>86){
+            v=86;
+        }
+        volumeClip.setValue(volumeClip.getMinimum()+v);
+        volumeCoins.setValue(volumeCoins.getMinimum()+v);
+        volumeLose.setValue(volumeLose.getMinimum()+v);
+        volumeWin.setValue(volumeWin.getMinimum()+v);
     }
-}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -322,6 +355,5 @@ public void playSound() {
     public javax.swing.JLabel tLeftLab;
     public javax.swing.JLabel timeLab;
     // End of variables declaration//GEN-END:variables
-   
 
 }

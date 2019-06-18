@@ -10,11 +10,12 @@ package labyrinth;
  * @author k256
  */
 public class Records extends javax.swing.JFrame {
+
     /**
      * Creates new form Records
      */
     public Records() {
-      
+
         initComponents();
     }
 
@@ -244,7 +245,6 @@ public class Records extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

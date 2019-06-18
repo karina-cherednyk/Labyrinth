@@ -5,6 +5,8 @@
  */
 package labyrinth;
 
+import javax.swing.JSlider;
+
 /**
  *
  * @author WCHR
@@ -15,6 +17,7 @@ public class MusicSet extends javax.swing.JFrame {
      * Creates new form MusicSet
      */
     Tools tools;
+
     public MusicSet(Tools t) {
         tools = t;
         initComponents();
@@ -48,6 +51,12 @@ public class MusicSet extends javax.swing.JFrame {
         setExitBut1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setExitBut1ActionPerformed(evt);
+            }
+        });
+
+        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1StateChanged(evt);
             }
         });
 
@@ -90,9 +99,13 @@ public class MusicSet extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setExitBut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setExitBut1ActionPerformed
-       setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_setExitBut1ActionPerformed
 
+    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+           int value = jSlider1.getValue();
+           tools.main.g.setVolume(value);
+    }//GEN-LAST:event_jSlider1StateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

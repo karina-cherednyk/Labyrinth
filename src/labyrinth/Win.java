@@ -15,6 +15,7 @@ public class Win extends javax.swing.JFrame {
      * Creates new form Win
      */
     Tools tools;
+
     public Win(Tools t) {
         tools = t;
         initComponents();
@@ -83,17 +84,16 @@ public class Win extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void winConfButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winConfButActionPerformed
-    //TODO NullPointer can`t write records in file because of it
-     tools.main.setVisible(true);
-     setVisible(false);
-     tools.main.g.setVisible(false);
-   
+        //TODO NullPointer can`t write records in file because of it
+        tools.main.setVisible(true);
+        setVisible(false);
+        tools.main.g.setVisible(false);
+
     }//GEN-LAST:event_winConfButActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel7;

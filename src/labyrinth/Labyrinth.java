@@ -31,53 +31,54 @@ import labyrinth.LabirinthPanel;
  */
 public class Labyrinth extends javax.swing.JFrame {
 
-   Tools t;
-   Game g ;
-   Settings s;
-   Records r;
-   File recFile;
+    Tools t;
+    Game g;
+    Settings s;
+    Records r;
+    File recFile;
     boolean game;
-    File fileToOpen ;
+    File fileToOpen;
+
     public Labyrinth() {
-         t = new Tools(this);
+        t = new Tools(this);
         g = new Game(t);
-        s=new Settings(t);
-        r=new Records();
+        s = new Settings(t);
+        r = new Records();
         initComponents();
-       recFile = new File("results.txt");
+        recFile = new File("results.txt");
         try {
-           BufferedReader oos = new BufferedReader(new FileReader(recFile));
-           ArrayList<Player> p = new ArrayList<>();
-           String s = oos.readLine();
-           while(s!=null){
-               p.add(Player.recognise(s));
-               s = oos.readLine();
-           }
-           DefaultTableModel e = (DefaultTableModel)r.easyTable.getModel();
-           DefaultTableModel m = (DefaultTableModel)r.mediumTable.getModel();
-           DefaultTableModel h = (DefaultTableModel)r.hardTable.getModel();
-          for(Player pl : p){
-              Object[] obj = {pl.name,pl.result};
-               switch (pl.level) {
-                   
-                   case 1:
-                       e.addRow(obj);
-                       break;
-                   case 2:
-                       m.addRow(obj);
-                       break;
-                   case 3:
-                       h.addRow(obj);
-                       break;
-                   default:
-                       break;
-               }
-          }
-          
-           oos.close();
-       } catch (IOException ex) {
-           Logger.getLogger(Labyrinth.class.getName()).log(Level.SEVERE, null, ex);
-       }
+            BufferedReader oos = new BufferedReader(new FileReader(recFile));
+            ArrayList<Player> p = new ArrayList<>();
+            String s = oos.readLine();
+            while (s != null) {
+                p.add(Player.recognise(s));
+                s = oos.readLine();
+            }
+            DefaultTableModel e = (DefaultTableModel) r.easyTable.getModel();
+            DefaultTableModel m = (DefaultTableModel) r.mediumTable.getModel();
+            DefaultTableModel h = (DefaultTableModel) r.hardTable.getModel();
+            for (Player pl : p) {
+                Object[] obj = {pl.name, pl.result};
+                switch (pl.level) {
+
+                    case 1:
+                        e.addRow(obj);
+                        break;
+                    case 2:
+                        m.addRow(obj);
+                        break;
+                    case 3:
+                        h.addRow(obj);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            oos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Labyrinth.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
     }
 
@@ -295,47 +296,56 @@ public class Labyrinth extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButActionPerformed
-       try {
-           FileWriter oos = new FileWriter(recFile);
-           ArrayList<Player> p = new ArrayList<>();
-           DefaultTableModel e = (DefaultTableModel)r.easyTable.getModel();
-           DefaultTableModel m = (DefaultTableModel)r.mediumTable.getModel();
-           DefaultTableModel h = (DefaultTableModel)r.hardTable.getModel();
-           for(int i=0; i<e.getRowCount(); i++) p.add(new Player(e.getValueAt(i, 0),e.getValueAt(i, 1),1 ));
-           for(int i=0; i<m.getRowCount(); i++) p.add(new Player(e.getValueAt(i, 0),e.getValueAt(i, 1),2 ));
-           for(int i=0; i<h.getRowCount(); i++) p.add(new Player(e.getValueAt(i, 0),e.getValueAt(i, 1),3 ));
-           for(Player pl : p) oos.write(pl.toString()+"\n");
-           oos.close();
-       } catch (IOException ex) {
-           Logger.getLogger(Labyrinth.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       System.exit(0);
+        try {
+            FileWriter oos = new FileWriter(recFile);
+            ArrayList<Player> p = new ArrayList<>();
+            DefaultTableModel e = (DefaultTableModel) r.easyTable.getModel();
+            DefaultTableModel m = (DefaultTableModel) r.mediumTable.getModel();
+            DefaultTableModel h = (DefaultTableModel) r.hardTable.getModel();
+            for (int i = 0; i < e.getRowCount(); i++) {
+                p.add(new Player(e.getValueAt(i, 0), e.getValueAt(i, 1), 1));
+            }
+            for (int i = 0; i < m.getRowCount(); i++) {
+                p.add(new Player(e.getValueAt(i, 0), e.getValueAt(i, 1), 2));
+            }
+            for (int i = 0; i < h.getRowCount(); i++) {
+                p.add(new Player(e.getValueAt(i, 0), e.getValueAt(i, 1), 3));
+            }
+            for (Player pl : p) {
+                oos.write(pl.toString() + "\n");
+            }
+            oos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Labyrinth.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.exit(0);
     }//GEN-LAST:event_exitButActionPerformed
 
     private void helpButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButActionPerformed
-         try {
-                    fileToOpen = new File("help.docx");
-                    Desktop.getDesktop().open(fileToOpen);
+        try {
+            fileToOpen = new File("help.docx");
+            Desktop.getDesktop().open(fileToOpen);
 
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }//GEN-LAST:event_helpButActionPerformed
 
     private void coinsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coinsButActionPerformed
-         try {  
-             if(!game){
-                    fileToOpen = new File("game1.mp4");
-                    game=true;
-                  
-             } else
-                  fileToOpen = new File("game2.mp4");
-                 Desktop.getDesktop().open(fileToOpen);
-                 t.setCoins(t.coins+=5);
-               
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+        try {
+            if (!game) {
+                fileToOpen = new File("game1.mp4");
+                game = true;
+
+            } else {
+                fileToOpen = new File("game2.mp4");
+            }
+            Desktop.getDesktop().open(fileToOpen);
+            t.setCoins(t.coins += 5);
+
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }//GEN-LAST:event_coinsButActionPerformed
 
     private void startButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButActionPerformed
@@ -343,12 +353,12 @@ public class Labyrinth extends javax.swing.JFrame {
         g.newGame();
         g.setVisible(true);
         setVisible(false);
-        
+
     }//GEN-LAST:event_startButActionPerformed
 
     private void settingsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButActionPerformed
-             s.setVisible(true);
-            setVisible(false);
+        s.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_settingsButActionPerformed
 
     private void recordsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordsButActionPerformed

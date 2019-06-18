@@ -15,6 +15,7 @@ public class TipsMenu extends javax.swing.JFrame {
      * Creates new form TipsMenu
      */
     Tools tools;
+
     public TipsMenu(Tools t) {
         tools = t;
         initComponents();
@@ -125,25 +126,24 @@ public class TipsMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tipsExitButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipsExitButActionPerformed
-       setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_tipsExitButActionPerformed
 
     private void oneBlockButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneBlockButActionPerformed
-        tools.help1=true;
-          tools.main.g.coinsLab.setText("COINS "+tools.coins);
-       setVisible(false);
+        tools.help1 = true;
+        tools.main.g.coinsLab.setText("COINS " + tools.coins);
+        setVisible(false);
     }//GEN-LAST:event_oneBlockButActionPerformed
 
     private void correctLabButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correctLabButActionPerformed
-        tools.help2=true;
-       tools.main.g.coinsLab.setText("COINS "+tools.coins);
+        tools.help2 = true;
+        tools.main.g.coinsLab.setText("COINS " + tools.coins);
         setVisible(false);
     }//GEN-LAST:event_correctLabButActionPerformed
 
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton correctLabBut;
