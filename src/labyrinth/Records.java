@@ -64,30 +64,67 @@ public class Records extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
 
         tabs.setBackground(new java.awt.Color(51, 51, 51));
+        tabs.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         tabs.setForeground(new java.awt.Color(51, 51, 51));
         tabs.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
-        easyTable.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 1, 24)); // NOI18N
+        jScrollPane1.setBorder(null);
+
+        easyTable.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        easyTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "PLAYER", "TIME"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        easyTable.setRowHeight(20);
         jScrollPane1.setViewportView(easyTable);
+        if (easyTable.getColumnModel().getColumnCount() > 0) {
+            easyTable.getColumnModel().getColumn(0).setResizable(false);
+            easyTable.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tabs.addTab("  EASY  ", jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
+        mediumTable.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         mediumTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -111,23 +148,26 @@ public class Records extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        mediumTable.setRowHeight(20);
         jScrollPane2.setViewportView(mediumTable);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
         tabs.addTab("  MEDIUM  ", jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
+        hardTable.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         hardTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -151,17 +191,18 @@ public class Records extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        hardTable.setRowHeight(20);
         jScrollPane3.setViewportView(hardTable);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
         tabs.addTab("  HARD  ", jPanel4);

@@ -47,6 +47,7 @@ public class LabirinthPanel extends JPanel{
     BufferedImage player;
     BufferedImage backGroung;
     BufferedImage flag;
+    BufferedImage coin;
     Point finish;
     int x; int y;
     String roadRout="/icons/road.jpg";
@@ -55,6 +56,7 @@ public class LabirinthPanel extends JPanel{
     String swampRout="/icons/swamp.jpg";
     String waterRout="/icons/water.jpg";
     String lavaRout="/icons/lava.jpg";
+    String coinRout="/icons/coin.png";
   
     private int xHovered=-1;
     private int yHovered=-1;
@@ -147,11 +149,22 @@ public class LabirinthPanel extends JPanel{
     public void keyPressed(KeyEvent e) {
         requestFocus();
         int code = e.getKeyCode();
-        if (code == KeyEvent.VK_UP){    if(y-1>=0&&blocks[y-1][x]!=false)y--; }
-        else if (code == KeyEvent.VK_DOWN){ if(y+1<blocks.length&&blocks[y+1][x]!=false)y++; }
-        else if (code == KeyEvent.VK_LEFT){ if(x-1>=0&&blocks[y][x-1]!=false)x--; }
-        else if (code == KeyEvent.VK_RIGHT){ if(x+1<blocks[1].length&&blocks[y][x+1]!=false)x++; }
-        else return;
+                 switch (code) {
+                     case KeyEvent.VK_UP:
+                         if(y-1>=0&&blocks[y-1][x]!=false)y--;
+                         break;
+                     case KeyEvent.VK_DOWN:
+                         if(y+1<blocks.length&&blocks[y+1][x]!=false)y++;
+                         break;
+                     case KeyEvent.VK_LEFT:
+                         if(x-1>=0&&blocks[y][x-1]!=false)x--;
+                         break;
+                     case KeyEvent.VK_RIGHT:
+                         if(x+1<blocks[1].length&&blocks[y][x+1]!=false)x++;
+                         break;
+                     default:
+                         return;
+                 }
        repaint();
         if(x==finish.x&&y==finish.y){
             try {
@@ -209,6 +222,16 @@ public class LabirinthPanel extends JPanel{
         g2.fill(r);
         g2.draw(r);
         g2.drawImage(flag, size*finish.x,size*finish.y,null);
+        for(int i=0; i<coinLocation.length; i++){
+            
+            if(coinLocation[i]==null)continue;
+            else if(x==coinLocation[i][0]&&y==coinLocation[i][1]) {
+                coinLocation[i]=null;
+                tools.coins++;
+                tools.main.g.coinsLab.setText("COINS: "+tools.coins);
+            }
+            else g2.drawImage(coin, coinLocation[i][0]*size, coinLocation[i][1]*size, null);
+        }
         g2.drawImage(player, x*size, y*size, null);
         
     }
@@ -249,15 +272,24 @@ public int height;
         canGo = setScaledInstance(roadRout);
         backGroung=setScaledInstance(lavaRout);
             }
-            
+           int i =CN;
+           int x,y;
+         while(i>0){
+         x = rg.nextInt(rc.sizeY);
+         y = rg.nextInt(rc.sizeX);
+         if(blocks[y][x]) coinLocation[--i] = new int[]{x,y};
+         }   
             
         player = setScaledInstance(tools.playerRout);
-         flag = setScaledInstance("/icons/flag.png");
+        coin = setScaledInstance(coinRout);
+        flag = setScaledInstance("/icons/flag.png");
         }catch(IOException e){}
+        
         repaint();
     }
    
   
     
-    
+    int CN = 5;
+    int[][] coinLocation = new int[CN][2];
 }

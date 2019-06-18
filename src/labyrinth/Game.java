@@ -85,7 +85,7 @@ TimerTask tLeft;
         settingsBut = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        coinsLab = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new LabirinthPanel(tools);
 
@@ -159,11 +159,11 @@ TimerTask tLeft;
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/coin.png"))); // NOI18N
-        jLabel4.setText("COINS:00");
-        jLabel4.setToolTipText("");
+        coinsLab.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 18)); // NOI18N
+        coinsLab.setForeground(new java.awt.Color(255, 255, 255));
+        coinsLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/coin.png"))); // NOI18N
+        coinsLab.setText("COINS: "+tools.coins);
+        coinsLab.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,7 +175,7 @@ TimerTask tLeft;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(timeLab, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(coinsLab, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -203,7 +203,7 @@ TimerTask tLeft;
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(timeLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4))
+                        .addComponent(coinsLab))
                     .addComponent(tLeftLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -218,7 +218,7 @@ TimerTask tLeft;
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1198, Short.MAX_VALUE)
+            .addGap(0, 1105, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +249,7 @@ TimerTask tLeft;
         if(tools.coins<5)
             ( (TipsMenu) tipsMenu).oneBlockBut.setEnabled(false);
     }
-        tipsMenu.show();
+        tipsMenu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void settingsButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButActionPerformed
@@ -259,15 +259,24 @@ TimerTask tLeft;
         timerUp.cancel();
         tools.addWinner();
             if(tools.onTime)timerDown.cancel();
-           
+           int coins;
             if(tools.level==1)
-             tools.setCoins(tools.coins+=5);
+            {
+                tools.setCoins(tools.coins+=5);
+                coins = 5;
+            }
             else if(tools.level==2)
-             tools.setCoins(tools.coins+=7);
+            {
+                tools.setCoins(tools.coins+=7);
+                coins = 7;
+            }
             else 
-              tools.setCoins(tools.coins+=10);
+            {
+                tools.setCoins(tools.coins+=10);
+                coins=10;
+            }
              winFrame.setVisible(true);
-            ( (Win) winFrame ).winLab.setText("You`ve won "+tools.coins+" coins");
+            ( (Win) winFrame ).winLab.setText("You`ve won "+coins+" coins");
                  
            
     }
@@ -308,6 +317,7 @@ TimerTask tLeft;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    public javax.swing.JLabel coinsLab;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -315,7 +325,6 @@ TimerTask tLeft;
     private javax.swing.JButton jButton6;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

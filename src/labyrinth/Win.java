@@ -44,6 +44,7 @@ public class Win extends javax.swing.JFrame {
 
         winConfBut.setBackground(new java.awt.Color(0, 0, 0));
         winConfBut.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
+        winConfBut.setForeground(new java.awt.Color(255, 255, 255));
         winConfBut.setText("CONFIRM");
         winConfBut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,8 +83,10 @@ public class Win extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void winConfButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winConfButActionPerformed
+    //TODO NullPointer can`t write records in file because of it
      tools.main.setVisible(true);
      setVisible(false);
+     tools.main.g.setVisible(false);
     }//GEN-LAST:event_winConfButActionPerformed
 
     /**

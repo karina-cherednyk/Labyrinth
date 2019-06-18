@@ -44,6 +44,7 @@ public class NoTime extends javax.swing.JFrame {
 
         noTimeConfirm.setBackground(new java.awt.Color(0, 0, 0));
         noTimeConfirm.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
+        noTimeConfirm.setForeground(new java.awt.Color(255, 255, 255));
         noTimeConfirm.setText("YOU`VE LOST");
         noTimeConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
