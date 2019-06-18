@@ -571,18 +571,18 @@ TimerTask tLeft;
     }//GEN-LAST:event_tipsExitButActionPerformed
     public void finishGame() throws InterruptedException{
         timerUp.cancel();
-             tools.addWinner();
+        tools.addWinner();
             if(tools.onTime)timerDown.cancel();
-            winFrame.show();
-            winLab.setText("You`ve won "+tools.coins+" coins");
+           
             if(tools.level==1)
              tools.setCoins(tools.coins+=5);
             else if(tools.level==2)
              tools.setCoins(tools.coins+=7);
             else 
               tools.setCoins(tools.coins+=10);
-            sleep(5000);
-            setVisible(false);
+             winFrame.show();
+            winLab.setText("You`ve won "+tools.coins+" coins");
+           
     }
 //    /**
 //     * @param args the command line arguments
