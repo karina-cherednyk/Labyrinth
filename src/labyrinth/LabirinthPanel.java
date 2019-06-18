@@ -182,7 +182,7 @@ public class LabirinthPanel extends JPanel{
     public void paintComponent(Graphics g){
     super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-      //  g2.drawImage(canNotGo, 0,0,getWidth(),getHeight(),null);
+      g2.fillRect(0, 0, getWidth(), getHeight());
                 for(int i=0; i<blocks.length; i++){  
             for(int j=0; j<blocks[i].length;j++){
             if( (i-yHovered)>=0 && (i-yHovered)<3 ){
@@ -210,6 +210,7 @@ public class LabirinthPanel extends JPanel{
         g2.draw(r);
         g2.drawImage(flag, size*finish.x,size*finish.y,null);
         g2.drawImage(player, x*size, y*size, null);
+        
     }
     private boolean canBeDark(int j,int i){
     int x0 = (int)x/3 * 3 + 1;
@@ -219,9 +220,12 @@ public class LabirinthPanel extends JPanel{
 public int width;
 public int height;
   private void setSize(){
-             size = width/rc.sizeY;
-             setPreferredSize(new Dimension(rc.sizeY*size, rc.sizeX*size));    
+             size = height/rc.sizeY!=0 ? height/rc.sizeX : width/rc.sizeY;
              height = rc.sizeX*size;
+             width = rc.sizeY*size;
+             setPreferredSize(new Dimension(width, height));    
+            
+             
     }
     public void regenerate() {
         x=1;y=1;
