@@ -1,2 +1,5 @@
-player>02:29>1
-player>00:51>1
+play>02:29>1
+rabbit>00:51>1
+player>00:44>1
+play>02:29>2
+play>02:29>3

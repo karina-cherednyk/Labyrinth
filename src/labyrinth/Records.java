@@ -73,6 +73,7 @@ public class Records extends javax.swing.JFrame {
 
         jScrollPane1.setBorder(null);
 
+        easyTable.setAutoCreateRowSorter(true);
         easyTable.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         easyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,6 +125,7 @@ public class Records extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
+        mediumTable.setAutoCreateRowSorter(true);
         mediumTable.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         mediumTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,6 +169,7 @@ public class Records extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
+        hardTable.setAutoCreateRowSorter(true);
         hardTable.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         hardTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

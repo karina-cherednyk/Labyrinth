@@ -175,6 +175,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="easyTable">
                       <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Yu Gothic" size="18" style="1"/>
                         </Property>
@@ -252,6 +253,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="mediumTable">
                       <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Yu Gothic" size="18" style="1"/>
                         </Property>
@@ -318,6 +320,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="hardTable">
                       <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Yu Gothic" size="18" style="1"/>
                         </Property>
