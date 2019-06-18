@@ -21,7 +21,7 @@ public class Tools {
     Labyrinth main;
     boolean help1;
     boolean darkness;
-    boolean help2=true;
+    boolean help2;
     HashMap<String,Integer> players; 
     String player="player";
    

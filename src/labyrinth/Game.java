@@ -24,6 +24,10 @@ Tools tools;
 int timePassed=0;
 int timeLeft;
 TimerTask tLeft;
+ public TipsMenu tipsMenu;
+    public Win winFrame;
+    public NoTime noTimeFrame;
+    public MusicSet ms;
 
   TimerTask tt = new TimerTask() {
                @Override
@@ -38,7 +42,11 @@ TimerTask tLeft;
      */
     public Game(Tools t) {
         tools=t;
+         tipsMenu= new TipsMenu(tools);
+         winFrame = new Win(tools);
         timeLeft = tools.getTimeLeft();
+       ms = new MusicSet(tools);
+        noTimeFrame = new NoTime(tools);
         noTimeFrame.setVisible(false);
        tLeft = new TimerTask(){
       @Override
@@ -218,7 +226,7 @@ TimerTask tLeft;
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1105, Short.MAX_VALUE)
+            .addGap(0, 1122, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,6 +285,8 @@ TimerTask tLeft;
             }
              winFrame.setVisible(true);
             ( (Win) winFrame ).winLab.setText("You`ve won "+coins+" coins");
+             coinsLab.setText("COINS: "+tools.coins);
+             this.setEnabled(false);
                  
            
     }
@@ -332,9 +342,6 @@ TimerTask tLeft;
     public javax.swing.JLabel tLeftLab;
     public javax.swing.JLabel timeLab;
     // End of variables declaration//GEN-END:variables
-    public TipsMenu tipsMenu = new TipsMenu(tools);
-    public Win winFrame = new Win(tools);
-    public NoTime noTimeFrame = new NoTime(tools);
-    public MusicSet ms = new MusicSet(tools);
+   
 
 }

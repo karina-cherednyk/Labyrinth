@@ -114,7 +114,6 @@ public class LabirinthPanel extends JPanel{
                   tools.setCoins( tools.coins-=5);
                  }
                  else if(tools.help2){
-                        //blocks=rc.getArray();
                         tools.help2=false;
                         tools.setCoins(tools.coins-=15);
                    Timer t = new Timer();
