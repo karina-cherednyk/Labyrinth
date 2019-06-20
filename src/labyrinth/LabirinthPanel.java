@@ -117,9 +117,11 @@ public class LabirinthPanel extends JPanel {
                     blocks = rc.correctOne(i, j);
                     tools.help1 = false;
                     tools.setCoins(tools.coins -= 5);
+                    tools.main.g.coinsLab.setText("COINS " + tools.coins);
                 } else if (tools.help2) {
                     tools.help2 = false;
                     tools.setCoins(tools.coins -= 15);
+                    tools.main.g.coinsLab.setText("COINS " + tools.coins);
                     Timer t = new Timer();
                     TimerTask tt = new TimerTask() {
 

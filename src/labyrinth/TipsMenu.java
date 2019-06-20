@@ -131,13 +131,11 @@ public class TipsMenu extends javax.swing.JFrame {
 
     private void oneBlockButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneBlockButActionPerformed
         tools.help1 = true;
-        tools.main.g.coinsLab.setText("COINS " + tools.coins);
         setVisible(false);
     }//GEN-LAST:event_oneBlockButActionPerformed
 
     private void correctLabButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correctLabButActionPerformed
         tools.help2 = true;
-        tools.main.g.coinsLab.setText("COINS " + tools.coins);
         setVisible(false);
     }//GEN-LAST:event_correctLabButActionPerformed
 
