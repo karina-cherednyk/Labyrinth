@@ -136,6 +136,7 @@ public class LabirinthPanel extends JPanel {
 
                             } else {
                                 blocks = rc.getArray();
+                                blocks[y][x]=true;
                                 firstTime = false;
                             }
 
